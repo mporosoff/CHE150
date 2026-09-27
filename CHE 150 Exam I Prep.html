@@ -1,0 +1,1352 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>CHE 150 Exam I Prep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: dark;
+  --bg-deep: #070b14;
+  --bg-surface: #0d1322;
+  --bg-card: rgba(255,255,255,0.028);
+  --bg-card-hover: rgba(255,255,255,0.05);
+  --border: rgba(255,255,255,0.07);
+  --border-accent: rgba(245,165,36,0.35);
+  --text-primary: #e6eaf1;
+  --text-secondary: #a0abbd;
+  --text-muted: #6b7689;
+  --accent: #f5a524;
+  --accent-deep: #f06b1f;
+  --accent-soft: rgba(245,165,36,0.09);
+  --on-accent: #1c1204;
+  --accent-blue: #60a5fa;
+  --accent-sky: #38bdf8;
+  --accent-teal: #2dd4bf;
+  --accent-orange: #fb923c;
+  --accent-pink: #f472b6;
+  --accent-red: #f87171;
+  --accent-yellow: #fbbf24;
+  --accent-purple: #a78bfa;
+  --accent-green: #34d399;
+  --accent-fuchsia: #e879f9;
+  --accent-lime: #a3e635;
+  --accent-brown: #d6a36a;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  font-family: 'IBM Plex Sans', -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+button { font-family: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.container { max-width: 880px; margin: 0 auto; padding-inline: 20px; }
+
+/* Header */
+.header {
+  padding-top: 28px;
+  background: linear-gradient(180deg, rgba(245,165,36,0.06) 0%, transparent 100%);
+}
+.header-inner { display: flex; align-items: center; gap: 14px; margin-bottom: 4px; }
+.logo {
+  width: 42px; height: 42px; border-radius: 11px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(245,165,36,0.22);
+}
+.logo svg { width: 24px; height: 24px; }
+.title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px; font-weight: 800; letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #f3f5f9, #a0abbd);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.subtitle { font-size: 13px; color: var(--text-muted); padding-left: 56px; margin-bottom: 18px; }
+
+/* Tabs */
+.tabbar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: rgba(7,11,20,0.92);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+.tabs { display: flex; gap: 8px; padding-block: 12px; overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab-btn {
+  padding: 9px 18px; border-radius: 10px; cursor: pointer;
+  font-size: 14px; font-weight: 500;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease; white-space: nowrap;
+  background: var(--bg-card); color: var(--text-secondary);
+  border: 1px solid transparent;
+}
+.tab-btn:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+  color: var(--on-accent); font-weight: 600; box-shadow: 0 4px 18px rgba(245,165,36,0.25);
+}
+
+/* Content */
+.content { padding-block: 24px 48px; }
+.section { display: none; }
+.section.active { display: block; }
+.section-lead { color: var(--text-secondary); font-size: 14px; margin-bottom: 20px; max-width: 65ch; }
+.label {
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.07em; color: var(--text-secondary); margin-bottom: 14px;
+}
+
+/* Home */
+.welcome-box {
+  background: linear-gradient(135deg, rgba(245,165,36,0.07), rgba(240,107,31,0.03));
+  border: 1px solid rgba(245,165,36,0.14);
+  border-radius: 16px; padding: 28px; margin-bottom: 24px;
+}
+.welcome-title { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; font-weight: 700; margin-bottom: 10px; text-wrap: balance; }
+.welcome-text { color: var(--text-secondary); font-size: 14px; line-height: 1.8; display: grid; gap: 10px; }
+.welcome-text strong { color: var(--text-primary); font-weight: 600; }
+.exam-strip {
+  display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 16px; padding-top: 14px;
+  border-top: 1px solid rgba(245,165,36,0.14); font-size: 13px; color: var(--text-secondary);
+}
+.exam-strip b { color: var(--accent); font-weight: 600; }
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 28px; }
+.stat-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 20px 12px; text-align: center; cursor: pointer;
+  color: inherit; transition: border-color 0.2s, background 0.2s;
+}
+.stat-card:hover { border-color: var(--border-accent); background: var(--bg-card-hover); }
+.stat-num { font-size: 30px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.stat-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.topics-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+.topic-badge {
+  border-radius: 10px; padding: 9px 15px; font-size: 13px; font-weight: 500;
+  border: 1px solid; cursor: pointer; background: transparent; transition: filter 0.2s, transform 0.2s;
+}
+.topic-badge:hover { filter: brightness(1.2); transform: translateY(-1px); }
+.tip-box {
+  border-left: 3px solid var(--accent); padding: 12px 16px; background: var(--accent-soft);
+  border-radius: 0 10px 10px 0; font-size: 14px; color: var(--text-secondary); max-width: 70ch;
+}
+.tip-box strong { color: var(--text-primary); }
+
+/* Study guide */
+.guide-grid { display: grid; gap: 18px; }
+.guide-block {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 22px;
+}
+.guide-block.added { border-style: dashed; border-color: rgba(245,165,36,0.3); }
+.guide-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.guide-title { font-family: 'Playfair Display', Georgia, serif; font-size: 19px; font-weight: 700; }
+.guide-note { font-size: 12px; color: var(--accent); font-weight: 500; }
+.guide-list { list-style: none; display: grid; gap: 10px; }
+.guide-item { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; }
+.guide-item input[type="checkbox"] { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent); cursor: pointer; }
+.guide-item label { cursor: pointer; font-size: 14px; }
+.guide-item label b { font-weight: 600; }
+.guide-item.done label { color: var(--text-muted); }
+.sub-list { list-style: none; display: grid; gap: 7px; margin-top: 8px; padding-left: 2px; }
+.sub-list li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; font-size: 13.5px; color: var(--text-secondary); }
+.sub-list li.done span.txt { color: var(--text-muted); text-decoration: line-through; text-decoration-color: rgba(255,255,255,0.2); }
+.sub-list input[type="checkbox"] { width: 15px; height: 15px; margin-top: 3px; accent-color: var(--accent); cursor: pointer; }
+.eq { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.92em; color: var(--text-primary); white-space: nowrap; }
+.links { display: inline-flex; flex-wrap: wrap; gap: 6px; margin-left: 6px; vertical-align: 1px; }
+.qlink {
+  font-size: 11px; font-weight: 600; padding: 1px 8px; border-radius: 20px; cursor: pointer;
+  border: 1px solid var(--border-accent); background: var(--accent-soft); color: var(--accent);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace; line-height: 1.6;
+}
+.qlink:hover { background: rgba(245,165,36,0.18); }
+.qlink.deck { border-color: rgba(96,165,250,0.35); background: rgba(96,165,250,0.08); color: var(--accent-blue); }
+.notes-callout {
+  border: 1px solid var(--border-accent); background: var(--accent-soft); border-radius: 12px;
+  padding: 14px 18px; font-size: 14px; color: var(--text-secondary); margin-bottom: 16px; max-width: 75ch;
+}
+.notes-callout b { color: var(--accent); font-weight: 600; }
+sub { font-size: 0.72em; line-height: 0; vertical-align: -0.28em; }
+.ans {
+  display: inline-block; padding: 3px 12px; margin-block: 4px; border-radius: 7px;
+  border: 1px solid rgba(245,165,36,0.45); background: rgba(245,165,36,0.08); color: #fde9c2; font-weight: 500;
+}
+.guide-progress { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; font-variant-numeric: tabular-nums; }
+.quote { font-size: 14px; color: var(--text-secondary); line-height: 1.75; max-width: 70ch; }
+.eqsheet { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.eq-group { border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; background: rgba(255,255,255,0.015); }
+.eq-group h4 { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-bottom: 8px; }
+.eq-group ul { list-style: none; display: grid; gap: 5px; }
+.eq-group li { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 13px; color: var(--text-primary); }
+.eq-group li small { font-family: 'IBM Plex Sans', sans-serif; color: var(--text-muted); font-size: 12px; }
+.eq-group p { font-size: 13px; color: var(--text-secondary); }
+
+/* Flash cards */
+.fc-toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+.fc-options { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-bottom: 18px; font-size: 13px; color: var(--text-secondary); }
+.toggle { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.toggle input { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
+.fc-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 13px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.progress { height: 4px; border-radius: 4px; background: rgba(255,255,255,0.06); overflow: hidden; margin-bottom: 16px; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-deep)); width: 0; transition: width 0.3s ease; }
+.fc-stage { perspective: 1400px; margin-bottom: 18px; }
+.fc-card {
+  display: grid; cursor: pointer; transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(.3,.7,.3,1); min-height: 260px; border-radius: 18px;
+}
+.fc-card.flipped { transform: rotateY(180deg); }
+.fc-face {
+  grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  border-radius: 18px; padding: 30px 28px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center; gap: 12px; border: 1px solid var(--border);
+}
+.fc-front { background: linear-gradient(160deg, #111a2d, #0b111e); }
+.fc-back { background: linear-gradient(160deg, #1b1608, #0f0c06); border-color: rgba(245,165,36,0.25); transform: rotateY(180deg); }
+.fc-deck-tag { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; }
+.fc-prompt { font-size: 22px; font-weight: 600; line-height: 1.35; text-wrap: balance; max-width: 30ch; }
+.fc-prompt.mono, .fc-answer.mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+.fc-answer { font-size: 19px; font-weight: 500; line-height: 1.5; color: #fde9c2; text-wrap: balance; max-width: 40ch; }
+.fc-note { font-size: 13.5px; color: var(--text-secondary); max-width: 52ch; line-height: 1.6; }
+.fc-hintline { font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+.fc-controls { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.fc-btn {
+  padding: 11px 10px; border-radius: 10px; border: 1px solid var(--border); background: var(--bg-card);
+  color: var(--text-secondary); font-size: 14px; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.fc-btn:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+.fc-btn.know { border-color: rgba(52,211,153,0.3); color: var(--accent-green); }
+.fc-btn.know:hover { background: rgba(52,211,153,0.08); }
+.fc-btn.again { border-color: rgba(248,113,113,0.3); color: var(--accent-red); }
+.fc-btn.again:hover { background: rgba(248,113,113,0.08); }
+.fc-empty { text-align: center; padding: 50px 20px; color: var(--text-secondary); border: 1px dashed var(--border); border-radius: 18px; }
+.fc-empty b { display: block; color: var(--text-primary); font-size: 18px; margin-bottom: 6px; }
+.kbd-hint { font-size: 12px; color: var(--text-muted); margin-top: 14px; text-align: center; }
+kbd { font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 1px 6px; border: 1px solid var(--border); border-radius: 4px; background: rgba(255,255,255,0.04); color: var(--text-secondary); }
+
+/* Problems */
+.filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.filter-chip {
+  padding: 7px 14px; border-radius: 20px; font-size: 12px; font-weight: 500;
+  cursor: pointer; border: 1px solid var(--border); background: var(--bg-card);
+  color: var(--text-secondary); transition: background 0.2s, color 0.2s, border-color 0.2s; white-space: nowrap;
+}
+.filter-chip:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+.filter-chip.active { background: var(--accent-soft); border-color: var(--border-accent); color: var(--accent); }
+.problem-count { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.linkbtn { background: none; border: none; color: var(--accent); cursor: pointer; font-size: 13px; padding: 0; }
+.linkbtn:hover { text-decoration: underline; }
+.problem-list { display: flex; flex-direction: column; gap: 14px; }
+.problem-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 22px 24px; transition: border-color 0.2s, background 0.2s;
+}
+.problem-card:hover { border-color: rgba(245,165,36,0.22); background: var(--bg-card-hover); }
+.problem-card.flash { border-color: var(--accent); }
+.problem-header {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 10px;
+  width: 100%; background: none; border: none; color: inherit; cursor: pointer; text-align: left; padding: 0;
+}
+.problem-tags { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.problem-topic { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+.difficulty-badge { font-size: 11px; padding: 2px 10px; border-radius: 20px; font-weight: 600; }
+.diff-easy { background: rgba(52,211,153,0.1); color: var(--accent-green); }
+.diff-medium { background: rgba(251,191,36,0.1); color: var(--accent-yellow); }
+.diff-hard { background: rgba(248,113,113,0.1); color: var(--accent-red); }
+.diff-challenge { background: rgba(232,121,249,0.1); color: var(--accent-fuchsia); }
+.problem-text { font-size: 14.5px; line-height: 1.75; color: #d3dae5; white-space: pre-wrap; cursor: pointer; overflow-wrap: anywhere; }
+.expand-icon { font-size: 12px; color: var(--text-muted); transition: transform 0.25s; flex-shrink: 0; }
+.problem-card.open .expand-icon { transform: rotate(180deg); }
+.problem-actions { margin-top: 18px; display: flex; flex-direction: column; gap: 12px; }
+.action-btn {
+  padding: 9px 16px; border-radius: 9px; border: 1px solid var(--border);
+  background: var(--bg-card); color: var(--text-secondary);
+  font-size: 13px; cursor: pointer; transition: background 0.2s, color 0.2s; text-align: left; align-self: flex-start;
+}
+.action-btn:hover { background: var(--bg-card-hover); color: var(--text-primary); }
+.hint-box {
+  padding: 15px 18px; border-radius: 10px;
+  background: rgba(251,191,36,0.05); border: 1px solid rgba(251,191,36,0.14);
+  font-size: 13.5px; color: #f7d27a; line-height: 1.7;
+}
+.solution-wrap { overflow-x: auto; border-radius: 10px; border: 1px solid rgba(96,165,250,0.16); background: rgba(96,165,250,0.04); }
+.solution-box {
+  padding: 18px 20px; font-size: 13px; color: #d3dae5; line-height: 1.8;
+  white-space: pre-wrap; font-family: 'IBM Plex Mono', ui-monospace, monospace; overflow-wrap: anywhere;
+}
+.footer { font-size: 12px; color: var(--text-muted); padding-block: 0 32px; }
+
+@media (max-width: 640px) {
+  .tabs { gap: 6px; }
+  .tab-btn { padding: 8px 10px; font-size: 13px; }
+  .tab-btn .ico, .tab-btn .long { display: none; }
+  .filter-bar { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; scrollbar-width: thin; }
+  .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .stat-num { font-size: 24px; }
+  .container { padding-inline: 16px; }
+  .subtitle { padding-left: 0; }
+  .fc-controls { grid-template-columns: 1fr 1fr; }
+  .fc-prompt { font-size: 19px; }
+  .fc-answer { font-size: 17px; }
+  .fc-face { padding: 24px 18px; }
+  .problem-card { padding: 18px 16px; }
+  .welcome-box { padding: 22px 18px; }
+  .guide-block { padding: 18px 16px; }
+}
+</style>
+<div class="header">
+  <div class="container">
+    <div class="header-inner">
+      <div class="logo" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1c1204" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2" fill="#1c1204"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg>
+      </div>
+      <div class="title">CHE 150</div>
+    </div>
+    <div class="subtitle">Introduction to Sustainable Energy | Exam I Study Tool</div>
+  </div>
+</div>
+<div class="tabbar">
+  <div class="container">
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="home" onclick="switchTab('home')"><span class="ico">◈ </span>Home</button>
+      <button class="tab-btn" data-tab="guide" onclick="switchTab('guide')"><span class="ico">☰ </span>Study Guide</button>
+      <button class="tab-btn" data-tab="cards" onclick="switchTab('cards')"><span class="ico">◇ </span>Flash Cards</button>
+      <button class="tab-btn" data-tab="problems" onclick="switchTab('problems')"><span class="ico">△ </span><span class="long">Practice </span>Problems</button>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="content">
+
+    <!-- HOME -->
+    <div id="tab-home" class="section active">
+      <div class="welcome-box">
+        <div class="welcome-title">Get ready for Exam I</div>
+        <div class="welcome-text">
+          <p>This tool covers CHE 150 from Lecture 1 through Lecture 9: units and dimensional analysis, forms of energy, the ideal gas law, the four laws of thermodynamics, heat and phase changes, heat engines, energy density, fossil fuels, exponential growth, and the solar heater project. It is built from Prof. Porosoff's lectures, homework, and the Exam I study guide.</p>
+          <p><strong>Study Guide</strong> is the official topic list and recommended equation sheet, with a checklist and links to matching practice.<br>
+          <strong>Flash Cards</strong> drill the units, conversions, equations, and concepts you need to recall quickly.<br>
+          <strong>Practice Problems</strong> are 20 exam-style problems, each with a hint and a fully worked solution.</p>
+        </div>
+        <div class="exam-strip">
+          <span><b>Exam I:</b> Tuesday, Oct. 6, 3:25-4:40 pm, Goergen 108</span>
+          <span><b>Covers:</b> Lectures 1 to 9</span>
+          <span><b>Bring:</b> a calculator and 1 sheet of handwritten notes (front and back)</span>
+        </div>
+      </div>
+      <div class="stats-grid">
+        <button class="stat-card" onclick="switchTab('problems')">
+          <div class="stat-num" style="color:var(--accent)" id="statProblems">20</div>
+          <div class="stat-label">Practice Problems</div>
+        </button>
+        <button class="stat-card" onclick="switchTab('cards')">
+          <div class="stat-num" style="color:var(--accent-blue)" id="statCards">0</div>
+          <div class="stat-label">Flash Cards</div>
+        </button>
+        <button class="stat-card" onclick="switchTab('guide')">
+          <div class="stat-num" style="color:var(--accent-green)" id="statGuide">0%</div>
+          <div class="stat-label">Guide Checked Off</div>
+        </button>
+      </div>
+      <div class="label">Topics Covered</div>
+      <div class="topics-grid" id="topicsGrid"></div>
+      <div class="tip-box"><strong>How to study:</strong> Be sure you know how to do all HW problems, practice problems, and all problems covered in class. Replicating the solutions with given constants/parameters is a better method of studying than reviewing the answer. Try each problem on paper before opening the hint, and open the solution only to check your work.</div>
+    </div>
+
+    <!-- STUDY GUIDE -->
+    <div id="tab-guide" class="section">
+      <p class="section-lead">The Exam I study guide, topic by topic. Check off each item once you can do it without notes. The tags next to each item jump to matching practice problems (<span class="qlink" style="cursor:default">Q1</span>) or flash card decks (<span class="qlink deck" style="cursor:default">Cards</span>).</p>
+      <div class="notes-callout"><b>Exam I:</b> Tuesday, Oct. 6, 3:25-4:40 pm, Goergen 108. You may bring <b>1 sheet of handwritten notes</b> (front and back). Building that sheet from this guide and the equation sheet below is good studying in itself.</div>
+      <div class="guide-progress" id="guideProgress"></div>
+      <div class="guide-grid" id="guideGrid"></div>
+    </div>
+
+    <!-- FLASH CARDS -->
+    <div id="tab-cards" class="section">
+      <p class="section-lead">Quick self-quizzing on units, conversions, equations, and key concepts. Say the answer out loud (or write it down) before you flip.</p>
+      <div class="fc-toolbar" id="deckBar"></div>
+      <div class="fc-options">
+        <label class="toggle"><input type="checkbox" id="fcReverse" onchange="setReverse(this.checked)"> Answer first (reverse)</label>
+        <label class="toggle"><input type="checkbox" id="fcHideKnown" onchange="setHideKnown(this.checked)"> Hide cards I know</label>
+        <button class="linkbtn" onclick="shuffleCards()">Shuffle</button>
+        <button class="linkbtn" onclick="resetKnown()">Reset progress</button>
+      </div>
+      <div class="fc-meta"><span id="fcPosition"></span><span id="fcKnownCount"></span></div>
+      <div class="progress"><div class="progress-fill" id="fcProgress"></div></div>
+      <div id="fcArea"></div>
+      <div class="kbd-hint"><kbd>Space</kbd> flip &nbsp; <kbd>←</kbd> <kbd>→</kbd> previous / next &nbsp; <kbd>K</kbd> I know it</div>
+    </div>
+
+    <!-- PROBLEMS -->
+    <div id="tab-problems" class="section">
+      <div class="filter-bar" id="filterBar"></div>
+      <div class="problem-count"><span id="problemCount"></span><button class="linkbtn" id="collapseAll" onclick="collapseAll()">Collapse all</button></div>
+      <div class="problem-list" id="problemList"></div>
+    </div>
+
+  </div>
+  <div class="footer">CHE 150, Fall 2026 | Prof. Marc Porosoff | University of Rochester</div>
+</div>
+
+<script>
+// ═══════════════════════════════════════
+// TOPICS
+// ═══════════════════════════════════════
+const TOPICS = {
+  "Units & Conversions":          { icon:"📏", color:"var(--accent-teal)",    rgb:"45,212,191" },
+  "Energy & Power":               { icon:"⚡", color:"var(--accent-yellow)",  rgb:"251,191,36" },
+  "Ideal Gas Law":                { icon:"🎈", color:"var(--accent-sky)",     rgb:"56,189,248" },
+  "First Law & Enthalpy":         { icon:"🔥", color:"var(--accent-orange)",  rgb:"251,146,60" },
+  "Heat & Phase Change":          { icon:"🧊", color:"var(--accent-blue)",    rgb:"96,165,250" },
+  "Heat Engines":                 { icon:"⚙️", color:"var(--accent-purple)",  rgb:"167,139,250" },
+  "Free Energy (ΔG)":             { icon:"⚖️", color:"var(--accent-pink)",    rgb:"244,114,182" },
+  "Energy Density & Combustion":  { icon:"⛽", color:"var(--accent-red)",     rgb:"248,113,113" },
+  "Fossil Fuels":                 { icon:"🛢️", color:"var(--accent-brown)",   rgb:"214,163,106" },
+  "Exponential Growth":           { icon:"📈", color:"var(--accent-green)",   rgb:"52,211,153" },
+  "Solar Project":                { icon:"☀️", color:"var(--accent)",         rgb:"245,165,36" },
+  "Integrated Exam Problem":      { icon:"🎯", color:"var(--accent-fuchsia)", rgb:"232,121,249" }
+};
+
+// ═══════════════════════════════════════
+// PRACTICE PROBLEMS (20 total)
+// ═══════════════════════════════════════
+const PROBLEMS = [
+  // ── UNITS & CONVERSIONS (1-2) ──
+  {
+    id:1, topic:"Units & Conversions", difficulty:"Easy",
+    question:"Q1. Which of the following are units of energy? Select all that apply.\n\n(a) Pa·m³\n(b) kWh/s\n(c) kg·m/s²\n(d) V·A·h\n(e) BTU/hr\n(f) L·atm\n(g) N/m²\n(h) psi·ft³",
+    hint:"Break each unit down and compare it to 1 J = 1 N·m = 1 kg·m²/s². Pressure × volume is an energy, power × time is an energy, and anything divided by time is a rate (power).",
+    solution:`Energy = force × distance → 1 J = 1 N·m = 1 kg·m²/s²
+
+(a) Pa·m³ = (N/m²)(m³) = N·m = J         ✔ ENERGY
+(b) kWh/s = energy ÷ time                 ✘ POWER (= 3600 kW)
+(c) kg·m/s² = N                           ✘ FORCE
+(d) V·A·h = (J/C)(C/s)(h) = W·h           ✔ ENERGY (power × time)
+(e) BTU/hr = energy ÷ time                ✘ POWER
+(f) L·atm = volume × pressure             ✔ ENERGY (1 L·atm = 101.3 J)
+(g) N/m² = Pa                             ✘ PRESSURE
+(h) psi·ft³ = (lbf/in²)(ft³) = lbf·ft     ✔ ENERGY (force × length)
+
+Answer: (a), (d), (f), (h)
+
+Tip: "pressure × volume" and "power × time" are always energies. A unit ending in "per second" or "per hour" is usually a power.`
+  },
+  {
+    id:2, topic:"Units & Conversions", difficulty:"Medium",
+    question:"Q2. Rank the following from the largest to the smallest quantity of energy. Show your conversions.\n\n(a) 0.55 kWh\n(b) 480 kcal\n(c) 1,850 BTU\n(d) 19,000 L·atm\n\nUse 1 atm = 101.3 kPa and the conversions on the equation sheet.",
+    hint:"Convert everything to MJ. For the BTU, use c = 1 cal/(g·°C) = 1 BTU/(lb·°F) with 1 kg = 2.2 lb, and remember that a 1 °F change equals a (1/1.8) °C change. For L·atm, use 1 L = 10⁻³ m³ and 1 Pa·m³ = 1 J.",
+    solution:`Convert everything to MJ (1 MJ = 10⁶ J):
+
+(a) 0.55 kWh × (3.6×10⁶ J / kWh) = 1.98×10⁶ J = 1.98 MJ
+
+(b) 480 kcal × (1000 cal/kcal) × (4.18 J/cal) = 2.01×10⁶ J = 2.01 MJ
+
+(c) First find 1 BTU in joules
+    (energy to raise 1 lb of water by 1 °F):
+    1 BTU = (4.18 J/g°C)(1000 g / 2.2)(1/1.8 °C) ≈ 1055 J
+    1,850 BTU × 1055 J/BTU = 1.95×10⁶ J = 1.95 MJ
+
+(d) 19,000 L·atm × (10⁻³ m³/L) × (101,300 Pa/atm)
+    = (19 m³)(101,300 N/m²) = 1.92×10⁶ N·m = 1.92 MJ
+
+[[(b) 2.01 > (a) 1.98 > (c) 1.95 > (d) 1.92 MJ]]
+
+All four are within ~5% of each other, so careless rounding
+(e.g., 1 cal ≈ 4 J) can flip the order. Carry 3 significant figures.`
+  },
+
+  // ── ENERGY & POWER (3-4) ──
+  {
+    id:3, topic:"Energy & Power", difficulty:"Easy",
+    question:"Q3. A 65 kg student climbs 5 flights of stairs (3.5 m per flight) in 45 s.\n\n(a) How much work does the student do against gravity?\n(b) What is the student's average power output?\n(c) A phone battery is rated at 4,000 mAh at 3.85 V. How many of these stair climbs hold the same energy as one full phone charge?",
+    hint:"Work against gravity is PE = mgh, and power is P = E/t. For the battery, convert mAh to coulombs (1 A = 1 C/s, 1 h = 3600 s), then use E = V × charge (1 V = 1 J/C).",
+    solution:`(a) h = 5 × 3.5 m = 17.5 m
+    W = PE = mgh = (65 kg)(9.8 m/s²)(17.5 m)
+    W = 11,148 J ≈ 11.1 kJ
+
+(b) P = E/t = 11,148 J / 45 s = 248 W
+    (A person hard at work is ~100 W, so this pace is only sustainable briefly.)
+
+(c) Charge in the battery:
+    4,000 mAh × (1 A / 1000 mA) × (3600 s / 1 h) = 14,400 A·s = 14,400 C
+    Energy: E = V × C = (3.85 J/C)(14,400 C) = 55,440 J ≈ 55.4 kJ
+
+    Number of climbs = 55,440 J / 11,148 J ≈ 5 climbs
+
+A full phone battery holds only about as much energy as lifting
+yourself ~90 m. Compare that with gasoline at ~34 MJ per liter.`
+  },
+  {
+    id:4, topic:"Energy & Power", difficulty:"Medium",
+    question:"Q4. A 1,800 kg electric vehicle cruises at 65 mi/hr.\n\n(a) What is its kinetic energy in kJ?\n(b) Regenerative braking recovers 60% of this kinetic energy when the car stops. How long (in hours) could the recovered energy run a 9 W LED bulb?\n(c) From what height would the car have to fall to reach the ground with the same kinetic energy? Neglect air resistance.",
+    hint:"Convert mi/hr to m/s before using KE = ½mv² (1 mi = 5280 ft, 1 m = 3.28 ft). For (c), set mgh = ½mv². What happens to the mass?",
+    solution:`(a) v = 65 mi/hr × (5280 ft/mi) × (1 m / 3.28 ft) × (1 hr / 3600 s)
+    v = 29.1 m/s
+    KE = ½mv² = ½(1,800 kg)(29.1 m/s)² = 7.60×10⁵ J = 760 kJ
+
+(b) E_{recovered} = 0.60 × 760 kJ = 456 kJ
+    t = E/P = 456,000 J / (9 J/s) = 50,700 s
+    t = 50,700 s / (3600 s/hr) = 14.1 hr
+
+(c) mgh = ½mv²  →  the mass cancels  →  h = v²/(2g)
+    h = (29.1 m/s)² / (2 × 9.8 m/s²) = 43 m  (about a 14-story building)
+
+Because the mass cancels, the answer to (c) is the same for a
+bicycle or a truck moving at 65 mi/hr.`
+  },
+
+  // ── IDEAL GAS LAW (5-6) ──
+  {
+    id:5, topic:"Ideal Gas Law", difficulty:"Medium",
+    question:"Q5. A dorm room measures 4.0 m × 3.5 m × 2.6 m. The air is at 22 °C and 1 atm. Treat air as an ideal gas with M = 29 g/mol.\n\n(a) How many moles of air are in the room?\n(b) What is the mass of the air in kg and in lbs?\n(c) Derive an expression for the density of air in terms of P, T, M and R, and evaluate it.\n(d) A space heater warms the room to 28 °C. The room is not airtight, so the pressure stays at 1 atm. How many grams of air leak out under the door?",
+    hint:"Use PV = nRT with R = 0.0821 L·atm/(mol·K), V in liters, and T in kelvin. For density, substitute n = m/M into the ideal gas law. In (d), P and V are fixed, so n has to change when T changes.",
+    solution:`(a) V = 4.0 × 3.5 × 2.6 = 36.4 m³ × (1000 L/m³) = 36,400 L
+    T = 22 + 273 = 295 K
+    n = PV/RT = (1 atm)(36,400 L) / [(0.0821 L·atm/mol·K)(295 K)]
+    n = 1,503 mol
+
+(b) m = nM = (1,503 mol)(29 g/mol) = 43,600 g = 43.6 kg
+    43.6 kg × 2.2 lb/kg = 96 lb (heavier than most people guess)
+
+(c) PV = nRT with n = m/M
+    PV = (m/M)RT  →  m/V = PM/(RT)
+    ρ = PM/(RT) = (1 atm)(29 g/mol) / [(0.0821)(295 K)]
+    ρ = 1.20 g/L = 1.20 kg/m³
+
+(d) At 28 °C, T = 301 K:
+    n₂ = (1)(36,400) / [(0.0821)(301)] = 1,473 mol
+    Δn = 1,503 - 1,473 = 30 mol
+    Δm = (30 mol)(29 g/mol) ≈ 870 g of air leaves the room
+
+At fixed P and V, n ∝ 1/T, so heating a leaky room pushes air out.
+Always use absolute temperature in PV = nRT.`
+  },
+  {
+    id:6, topic:"Ideal Gas Law", difficulty:"Hard",
+    question:"Q6. A lecture hall has a volume of 1,500 m³ at 25 °C and 1 atm. The air starts at 420 ppmv CO₂. During a power outage, someone runs a propane (C₃H₈) generator indoors (a very bad idea). All of the CO₂ produced stays in the room.\n\n(a) Write the balanced combustion reaction for propane.\n(b) How many moles of CO₂ must be added to raise the concentration to 5,000 ppmv, where headaches begin?\n(c) What mass of propane (in kg) must burn to reach that level?\n\nAtomic masses: C = 12, H = 1, O = 16 g/mol.",
+    hint:"ppmv is a volume fraction: 1 ppmv = 1 m³ of gas per 10⁶ m³ of air. Find the added volume of CO₂, convert it to moles with PV = nRT, then use the mole ratio from the balanced equation.",
+    solution:`(a) Balance C first, then H, then O:
+    C₃H₈ + 5O₂ → 3CO₂ + 4H₂O
+    O check: 5 × 2 = 10 on the left; 3 × 2 + 4 = 10 on the right ✔
+
+(b) Increase needed = 5,000 - 420 = 4,580 ppmv
+    V_{CO₂} = (4,580 / 10⁶) × 1,500 m³ = 6.87 m³ = 6,870 L
+    n_{CO₂} = PV/RT = (1 atm)(6,870 L) / [(0.0821)(298 K)]
+    n_{CO₂} = 281 mol
+
+(c) Mole ratio: 1 mol C₃H₈ → 3 mol CO₂
+    n_{C₃H₈} = 281 / 3 = 93.6 mol
+    M_{C₃H₈} = 3(12) + 8(1) = 44 g/mol
+    m = (93.6 mol)(44 g/mol) = 4,120 g ≈ 4.1 kg of propane
+
+That is about half of a standard 20 lb grill tank (9.1 kg).
+Combustion products build up quickly in a closed room, and
+carbon monoxide from incomplete combustion is an even bigger danger.`
+  },
+
+  // ── FIRST LAW & ENTHALPY (7-8) ──
+  {
+    id:7, topic:"First Law & Enthalpy", difficulty:"Easy",
+    question:"Q7. Using our sign convention, ΔU = Q + W, find ΔU of the system for each process:\n\n(a) A gas absorbs 520 J of heat and does 210 J of work on its surroundings.\n(b) A piston compresses a gas, doing 800 J of work on it, while the gas releases 300 J of heat.\n(c) A gas in a perfectly insulated cylinder expands and does 150 J of work.\n(d) A sealed, rigid steel tank of gas is heated with 2.0 kJ.",
+    hint:"Q > 0 when heat flows INTO the system. W > 0 when work is done ON the system (compression) and W < 0 when the system does work (expansion). Insulated means Q = 0. Rigid means ΔV = 0, so W = -PΔV = 0.",
+    solution:`Convention: ΔU = Q + W
+  Q (+) heat into system,  (-) heat out
+  W (+) work done ON system, (-) work done BY system
+
+(a) Q = +520 J, W = -210 J
+    ΔU = 520 + (-210) = +310 J
+
+(b) Q = -300 J, W = +800 J
+    ΔU = -300 + 800 = +500 J
+
+(c) Insulated: Q = 0, W = -150 J
+    ΔU = 0 + (-150) = -150 J   (the gas cools as it expands)
+
+(d) Rigid: ΔV = 0 → W = -PΔV = 0, Q = +2,000 J
+    ΔU = +2,000 J   (all of the heat becomes internal energy)
+
+Common mistake: mixing in the textbook (Dunlap) form, Q = ΔU + W,
+where W is work done BY the system. Both describe the same physics,
+but pick one convention and stay consistent.`
+  },
+  {
+    id:8, topic:"First Law & Enthalpy", difficulty:"Hard",
+    question:"Q8. A gas is held in a vertical cylinder by a frictionless piston with an area of 0.020 m². A 25 kg mass rests on the piston, and the outside air is at 101.3 kPa. You add 1,200 J of heat and the piston slowly rises 0.30 m.\n\n(a) What is the (constant) pressure of the gas?\n(b) What is ΔV?\n(c) What is W, with the correct sign?\n(d) What is ΔU of the gas?\n(e) What is ΔH? Why does it equal Q here?\n(f) How much of the work went into lifting the 25 kg mass, and where did the rest go?",
+    hint:"Do a force balance on the piston: the gas pushes up with P·A, and the atmosphere plus the weight push down. So P_{gas} = P_{atm} + mg/A. Then use W = -PΔV, ΔU = Q + W, and ΔH = ΔU + PΔV.",
+    solution:`(a) Force balance on the piston:
+    P_{gas}·A = P_{atm}·A + mg
+    P_{gas} = P_{atm} + mg/A
+          = 101,300 Pa + (25 kg)(9.8 m/s²)/(0.020 m²)
+          = 101,300 + 12,250 = 113,550 Pa ≈ 114 kPa
+
+(b) ΔV = A × Δh = (0.020 m²)(0.30 m) = 0.0060 m³
+
+(c) W = -PΔV = -(113,550 N/m²)(0.0060 m³) = -681 J
+    Negative: the gas expands and does work on the surroundings.
+
+(d) ΔU = Q + W = 1,200 J + (-681 J) = +519 J
+
+(e) ΔH = ΔU + PΔV = 519 J + 681 J = 1,200 J = Q
+    At constant pressure, Q = ΔH. Enthalpy includes the PΔV
+    energy needed to "make room" for the system.
+
+(f) Lifting the mass:        mgh = (25)(9.8)(0.30) = 73.5 J
+    Pushing back the air:  P_{atm}·ΔV = (101,300)(0.0060) = 608 J
+    Total = 73.5 + 608 = 681 J ✔
+
+Most of the work (~89%) goes into pushing the atmosphere out of
+the way, not into lifting the weight.`
+  },
+
+  // ── HEAT & PHASE CHANGE (9-10) ──
+  {
+    id:9, topic:"Heat & Phase Change", difficulty:"Medium",
+    question:"Q9. You drop 150 g of ice at -12 °C into 400 mL of hot coffee at 85 °C in a perfectly insulated mug. Treat the coffee as water.\n\nc_{ice} = 2.1 J/(g·°C), c_{water} = 4.18 J/(g·°C), ΔH_{fus} = 334 J/g, ρ_{water} = 1 g/mL\n\n(a) Sketch temperature vs. heat added for the ice.\n(b) What is the final temperature of the coffee?",
+    hint:"Heat lost by the coffee = heat gained by the ice. The ice gains heat in three steps: warm to 0 °C, melt at 0 °C, then warm as liquid to T_{f}. First check that the coffee has enough heat to melt all of the ice.",
+    solution:`(a) Sketch (T vs. Q for the ice):
+    • sloped line from -12 °C up to 0 °C (solid ice warming)
+    • flat plateau at 0 °C while the ice melts (ΔH_{fus})
+    • sloped line from 0 °C up to T_{f} (liquid water warming);
+      it is less steep than the ice segment because c_{water} > c_{ice}
+
+(b) Heat gained by the ice:
+    Q₁ = m·c_{ice}·ΔT = (150)(2.1)(0 - (-12)) =  3,780 J
+    Q₂ = m·ΔH_{fus}   = (150)(334)           = 50,100 J
+    Q₃ = m·c_{water}·(T_{f} - 0) = (150)(4.18)T_{f} = 627·T_{f}
+
+    Heat lost by the coffee:
+    Q_{coffee} = (400)(4.18)(85 - T_{f}) = 142,120 - 1,672·T_{f}
+
+    Check: cooling the coffee all the way to 0 °C releases 142,120 J,
+    more than Q₁ + Q₂ = 53,880 J, so all of the ice melts ✔
+
+    Energy balance (heat lost = heat gained):
+    142,120 - 1,672·T_{f} = 3,780 + 50,100 + 627·T_{f}
+    88,240 = 2,299·T_{f}
+
+[[T_{f} = 38.4 °C]]
+
+Melting (50,100 J) takes ~13× more energy than warming the ice by
+12 °C. Latent heats are large.`
+  },
+  {
+    id:10, topic:"Heat & Phase Change", difficulty:"Hard",
+    question:"Q10. (a) Why is a steam burn worse than a hot-water burn? Compare the heat released to your skin (37 °C) by 5.0 g of steam at 100 °C and by 5.0 g of liquid water at 100 °C.\n\n(b) An electric kettle (1.5 kW, 90% efficient) holds 1.2 L of water at 18 °C. How long does it take to reach 100 °C? If you forget to turn it off, how much additional time does it take to boil away 25% of the water?\n\nc_{water} = 4.18 J/(g·°C), ΔH_{vap} = 2,257 J/g",
+    hint:"Steam must first condense, releasing ΔH_{vap}, before it cools as liquid. For the kettle, only 90% of the electrical power reaches the water: P_{water} = 0.90 × 1,500 W. Then t = Q/P.",
+    solution:`(a) Liquid water, 100 °C → 37 °C:
+    Q = mcΔT = (5.0 g)(4.18)(63 °C) = 1,317 J
+
+    Steam, 100 °C → liquid at 100 °C → 37 °C:
+    Q = m·ΔH_{vap} + mcΔT = (5.0)(2,257) + 1,317
+    Q = 11,285 + 1,317 = 12,600 J
+
+    Steam delivers ~9.6× more heat, because the latent heat of
+    condensation is released directly onto your skin.
+
+(b) P_{water} = 0.90 × 1,500 W = 1,350 W
+
+    Heating: Q = mcΔT = (1,200 g)(4.18)(100 - 18) = 411,300 J
+    t = Q/P = 411,300 J / 1,350 J/s = 305 s ≈ 5.1 min
+
+    Boiling off 25%: m = 0.25 × 1,200 g = 300 g
+    Q = m·ΔH_{vap} = (300)(2,257) = 677,100 J
+    t = 677,100 / 1,350 = 502 s ≈ 8.4 min
+
+Boiling away only a quarter of the water takes longer than heating
+all of it from 18 °C to 100 °C.`
+  },
+
+  // ── HEAT ENGINES (11) ──
+  {
+    id:11, topic:"Heat Engines", difficulty:"Medium",
+    question:"Q11. A geothermal power plant draws hot brine at 350 °F and rejects heat to a river at 55 °F.\n\n(a) Convert both temperatures to Rankine and to Kelvin.\n(b) What is the maximum (Carnot) efficiency? Show that you get the same answer with either absolute scale.\n(c) The real plant reaches 60% of the Carnot efficiency and produces 25 MW of electricity. At what rate is heat drawn from the brine, and at what rate is it rejected to the river?",
+    hint:"Carnot efficiency needs absolute temperatures: °R = °F + 459.7, and K = °C + 273 with °C = (°F - 32)/1.8. For (c), use η = W/Q_{H} and |Q_{H}| = |W| + |Q_{C}|, written as rates (power).",
+    solution:`(a) Rankine: T_{H} = 350 + 459.7 = 809.7 °R
+             T_{C} =  55 + 459.7 = 514.7 °R
+    Kelvin:  T_{H} = (350 - 32)/1.8 = 176.7 °C → 449.7 K
+             T_{C} = ( 55 - 32)/1.8 =  12.8 °C → 285.8 K
+
+(b) η_{C} = 1 - T_{C}/T_{H}
+    Rankine: 1 - 514.7/809.7 = 0.364
+    Kelvin:  1 - 285.8/449.7 = 0.364 ✔ same, both scales are absolute
+
+    Using °F directly gives 1 - 55/350 = 0.84, which is WRONG.
+
+(c) η_{actual} = 0.60 × 0.364 = 0.219
+    Q_{H} = W/η = 25 MW / 0.219 = 114 MW  (heat drawn from brine)
+    Q_{C} = Q_{H} - W = 114 - 25   =  89 MW  (heat rejected to river)
+
+Low-temperature heat sources such as geothermal brine have low
+Carnot limits, so most of the heat ends up in the river.`
+  },
+
+  // ── FREE ENERGY (12) ──
+  {
+    id:12, topic:"Free Energy (ΔG)", difficulty:"Medium",
+    question:"Q12. Use ΔG = ΔH - TΔS (P = 1 atm).\n\n(a) For each process, give the signs of ΔH and ΔS and state whether it is spontaneous:\n   (i) Water (l) → Water (g) at 110 °C\n   (ii) Water (l) → Ice (s) at +5 °C\n   (iii) Separating air into pure N₂ and pure O₂ at 25 °C\n   (iv) Burning coal, C + O₂ → CO₂, at 25 °C\n\n(b) A reaction has ΔH = +25 kJ/mol and ΔS = +60 J/(mol·K). Is it spontaneous at 300 K? At 500 K? Above what temperature does it become spontaneous?\n\n(c) In lecture, forming natural gas from glucose (C₆H₁₂O₆ → CH₄ + C₃H₈ + 2CO₂ + O₂) had ΔH = +308 kJ/mol and ΔS = +877 J/(mol·K). What is the minimum temperature (°C) at which it is spontaneous?",
+    hint:"ΔG < 0 means spontaneous. Watch the units: ΔS is usually in J/(mol·K) while ΔH is in kJ/mol, so convert before subtracting. The crossover temperature is where ΔG = 0, so T = ΔH/ΔS (in kelvin).",
+    solution:`(a) (i)  Vaporization: ΔH > 0 (endothermic), ΔS > 0 (liquid → gas)
+         Above the boiling point, TΔS > ΔH → ΔG < 0 → SPONTANEOUS
+    (ii) Freezing: ΔH < 0, ΔS < 0
+         Above the melting point, -TΔS wins → ΔG > 0 → NOT spontaneous
+    (iii) Separation: ΔH ≈ 0, ΔS < 0 (more ordered)
+         → ΔG > 0 → NOT spontaneous (it takes work to un-mix gases)
+    (iv) Combustion: ΔH < 0 (exothermic), ΔS ≈ 0 (1 mol gas in, 1 out)
+         → ΔG < 0 → SPONTANEOUS
+         (Coal still needs ignition: ΔG says the reaction is favorable,
+          not how fast it goes.)
+
+(b) Convert: ΔS = +60 J/(mol·K) = +0.060 kJ/(mol·K)
+    300 K: ΔG = 25 - (300)(0.060) = 25 - 18 = +7 kJ/mol  → NOT spontaneous
+    500 K: ΔG = 25 - (500)(0.060) = 25 - 30 = -5 kJ/mol  → SPONTANEOUS
+    Crossover (ΔG = 0): T = ΔH/ΔS = 25 / 0.060 = 417 K (144 °C)
+    ΔH > 0 and ΔS > 0 → spontaneous only at HIGH temperature.
+
+(c) T = ΔH/ΔS = (308 kJ/mol) / (0.877 kJ/mol·K) = 351 K = 78 °C
+
+    Check with lecture: ΔG(298 K) = +46 kJ/mol (not spontaneous)
+                        ΔG(373 K) = -19 kJ/mol (spontaneous) ✔
+    Heat underground makes formation favorable, but it still takes
+    10⁷ to 10⁸ years because the rate is slow.`
+  },
+
+  // ── ENERGY DENSITY & COMBUSTION (13-14) ──
+  {
+    id:13, topic:"Energy Density & Combustion", difficulty:"Medium",
+    question:"Q13. Compare three fuels on a gravimetric, volumetric, and molar basis at 25 °C and 1 atm.\n\nMethane (CH₄, gas): ΔH_{c} = 55.5 MJ/kg\nHydrogen (H₂, gas): ΔH_{c} = 142 MJ/kg\nOctane (C₈H₁₈, liquid gasoline): ΔH_{c} = 46.8 MJ/kg, ρ = 0.70 kg/L\n\n(a) Use the ideal gas law to find the density (g/L) of CH₄ and H₂.\n(b) Calculate the volumetric energy density (MJ/L) of each fuel.\n(c) Calculate the molar energy density (MJ/mol) of each fuel.\n(d) Rank the fuels on each basis. Why is H₂ hard to use as a car fuel even though it has the highest gravimetric energy density? How many liters of H₂ gas (25 °C, 1 atm) hold the same energy as 1 L of gasoline?",
+    hint:"For a gas, ρ = PM/(RT). With R = 0.0821 L·atm/(mol·K) and M in g/mol, this gives g/L. Then MJ/kg × kg/L = MJ/L, and MJ/kg × kg/mol = MJ/mol. Watch the g → kg conversions.",
+    solution:`(a) ρ = PM/(RT), with T = 25 + 273 = 298 K
+    CH₄: ρ = (1 atm)(16 g/mol) / [(0.0821 L·atm/mol·K)(298 K)] = 0.654 g/L
+    H₂:  ρ = (1 atm)(2 g/mol)  / [(0.0821)(298)]                = 0.082 g/L
+
+(b) Volumetric = gravimetric × density
+    CH₄:    55.5 MJ/kg × 0.000654 kg/L = 0.0363 MJ/L
+    H₂:     142 MJ/kg  × 0.000082 kg/L = 0.0116 MJ/L
+    Octane: 46.8 MJ/kg × 0.70 kg/L     = 32.8 MJ/L
+
+(c) Molar = gravimetric × molar mass
+    M_{C₈H₁₈} = 8(12) + 18(1) = 114 g/mol
+    CH₄:    55.5 MJ/kg × 0.016 kg/mol = 0.89 MJ/mol
+    H₂:     142 MJ/kg  × 0.002 kg/mol = 0.28 MJ/mol
+    Octane: 46.8 MJ/kg × 0.114 kg/mol = 5.34 MJ/mol
+
+(d) Gravimetric (MJ/kg): H₂ > CH₄ > octane
+    Volumetric (MJ/L):   octane >> CH₄ > H₂
+    Molar (MJ/mol):      octane > CH₄ > H₂
+
+    H₂ holds the most energy per kg, but as a gas it takes up a huge volume:
+    V_{H₂} = 32.8 MJ / (0.0116 MJ/L) ≈ 2,800 L (2.8 m³) to match 1 L of gasoline
+    That is why H₂ must be compressed (350 to 700 bar) or liquefied, which
+    costs energy and requires heavy tanks.
+
+Significance: gravimetric matters when weight is limiting (aircraft, rockets),
+volumetric when space is limiting (a car's fuel tank), and molar links energy
+to stoichiometry.`
+  },
+  {
+    id:14, topic:"Energy Density & Combustion", difficulty:"Hard",
+    question:"Q14. A natural gas power plant produces 600 MW of electricity at an overall efficiency of 42%. Treat natural gas as pure methane (ΔH_{c} = 55.5 MJ/kg, M = 16 g/mol).\n\n(a) At what rate (kg/s) is methane burned?\n(b) What is the volumetric flow rate of methane (m³/s) at 25 °C and 1 atm?\n(c) What is the rate of CO₂ emissions in megatonnes per year?\n(d) What is the CO₂ intensity in grams of CO₂ per kWh of electricity?",
+    hint:"Work backwards from the electrical output: Q_{in} = W_{out}/η. Divide by the heating value to get kg/s, convert to mol/s, then use PV = nRT and CH₄ + 2O₂ → CO₂ + 2H₂O (1 mol CO₂ per mol CH₄). 1 tonne = 1000 kg, so 1 Mt = 10⁹ kg.",
+    solution:`(a) Heat input: Q_{in} = 600 MW / 0.42 = 1,429 MW = 1.429×10⁹ J/s
+    ṁ = (1.429×10⁹ J/s) / (55.5×10⁶ J/kg) = 25.7 kg/s CH₄
+
+(b) ṅ = (25,700 g/s) / (16 g/mol) = 1,609 mol/s
+    V̇ = ṅRT/P = (1,609)(0.0821)(298) / (1 atm) = 39,400 L/s
+    V̇ = 39.4 m³/s   (a cube 3.4 m on each side, every second)
+
+(c) CH₄ + 2O₂ → CO₂ + 2H₂O  →  1 mol CO₂ per mol CH₄
+    ṁ_{CO₂} = (1,609 mol/s)(44 g/mol) = 70,800 g/s = 70.8 kg/s
+    Per year: 70.8 kg/s × 3600 s/h × 24 h/d × 365 d/yr = 2.23×10⁹ kg/yr
+    2.23×10⁹ kg × (1 t / 1000 kg) × (1 Mt / 10⁶ t) = 2.2 Mt CO₂/yr
+
+(d) Electricity produced each second:
+    600,000 kW × (1 h / 3600 s) × 1 s = 166.7 kWh
+    CO₂ intensity = 70,800 g / 166.7 kWh = 425 g CO₂/kWh
+
+Coal plants emit roughly twice as much CO₂ per kWh, one reason
+natural gas has replaced coal for much of U.S. electricity.`
+  },
+
+  // ── FOSSIL FUELS (15) ──
+  {
+    id:15, topic:"Fossil Fuels", difficulty:"Medium",
+    question:"Q15. A student drives 30 miles round trip to campus, 5 days per week, 50 weeks per year, in a car that gets 25 mi/gal. Treat gasoline as pure octane (C₈H₁₈): ρ = 0.70 kg/L, ΔH_{c} = 46.8 MJ/kg, 1 gal = 3.78 L. Atomic masses: C = 12, H = 1, O = 16 g/mol.\n\n(a) Write the balanced combustion reaction for octane.\n(b) How many gallons and how many kg of gasoline does the student burn per year?\n(c) How many kg of CO₂ does the car emit per year?\n(d) The engine is 25% efficient. How much energy (in kWh) does the fuel release each year, and how much of it is rejected as waste heat?\n(e) Give two advantages and two disadvantages of fossil fuels that explain why most cars still run on gasoline.",
+    hint:"Chain the conversions: miles → gallons → liters → kg → mol C₈H₁₈ → mol CO₂ → kg CO₂. The mole ratio comes from the balanced equation (1 C₈H₁₈ → 8 CO₂). For (d), use Q = m·ΔH_{c} and 1 kWh = 3.6 MJ.",
+    solution:`(a) C₈H₁₈ + 25/2 O₂ → 8CO₂ + 9H₂O   (or 2C₈H₁₈ + 25O₂ → 16CO₂ + 18H₂O)
+    O check: 25 on the left; 2(8) + 9 = 25 on the right ✔
+
+(b) Distance: 30 mi/day × 5 day/wk × 50 wk/yr = 7,500 mi/yr
+    Gasoline: 7,500 mi / (25 mi/gal) = 300 gal/yr
+    300 gal × 3.78 L/gal = 1,134 L
+    1,134 L × 0.70 kg/L = 794 kg/yr
+
+(c) 794,000 g / (114 g/mol) = 6,960 mol C₈H₁₈
+    6,960 mol C₈H₁₈ × (8 mol CO₂ / 1 mol C₈H₁₈) = 55,700 mol CO₂
+    55,700 mol × 44 g/mol = 2.45×10⁶ g
+    [[2,450 kg CO₂ per year (about 2.5 tonnes)]]
+
+    Each kg of fuel makes ~3.1 kg of CO₂, because every C atom picks up
+    two O atoms from the air.
+
+(d) Q = m·ΔH_{c} = (794 kg)(46.8 MJ/kg) = 37,200 MJ/yr
+    37,200 MJ × (1 kWh / 3.6 MJ) = 10,300 kWh/yr
+    Useful work: 0.25 × 10,300 = 2,580 kWh/yr
+    Waste heat:  0.75 × 10,300 = 7,740 kWh/yr
+
+(e) Advantages: inexpensive, abundant, high energy density, easily
+    stored and transported, fits existing infrastructure (gas stations,
+    pipelines), familiar.
+    Disadvantages: CO₂ emissions and climate change, finite supply
+    (formed over 10⁷ to 10⁸ years), air pollution, extraction impacts
+    (mining, spills, fracking fluids), price volatility.`
+  },
+
+  // ── EXPONENTIAL GROWTH (16-17) ──
+  {
+    id:16, topic:"Exponential Growth", difficulty:"Medium",
+    question:"Q16. About 1.2 million electric cars were on the road worldwide in 2015, and about 40 million in 2023.\n\n(a) Assuming exponential growth, N(t) = N₀e^(at), find the growth rate a (per year).\n(b) If this growth continued, in what year would there be 1.5 billion electric cars (roughly every car on Earth)?",
+    hint:"Set t = 0 in 2015 so that N₀ = 1.2 million. Take the natural log of both sides: ln(N/N₀) = at.",
+    solution:`(a) N(8) = N₀e^(8a)  →  40 = 1.2·e^(8a)
+    ln(40/1.2) = 8a
+    a = ln(33.3)/8 = 3.507/8 = 0.438 yr⁻¹  (≈ 44% per year)
+
+(b) 1,500 = 1.2·e^(0.438 t)
+    t = ln(1,500/1.2) / 0.438 = ln(1,250) / 0.438 = 7.13 / 0.438
+    t = 16.3 years  →  2015 + 16.3 ≈ 2031`
+  },
+  {
+    id:17, topic:"Exponential Growth", difficulty:"Medium",
+    question:"Q17. World coal reserves are roughly 1.0×10¹² tonnes, and current consumption is about 8.0×10⁹ tonnes per year.\n\n(a) How long would the reserves last if consumption stays constant?\n(b) Suppose consumption grows instead. Find the annual consumption 50 years from now for:\n   (i) linear growth, N(t) = N₀ + (dN/dt)·t, with dN/dt = 0.16×10⁹ tonnes/yr per year\n   (ii) exponential growth, N(t) = N₀e^(at), with a = 0.02 yr⁻¹ (2% per year)\nBoth cases start with the same rate of increase today. Which grows faster, and what does that mean for your answer to (a)?",
+    hint:"(a) is a rate problem: time = amount / rate. For (b), plug t = 50 yr into each growth equation. At t = 0, the exponential case increases by a·N₀ = 0.02 × 8.0×10⁹ = 0.16×10⁹ tonnes/yr each year, the same as the linear case.",
+    solution:`(a) t = reserves / rate = (1.0×10¹² t) / (8.0×10⁹ t/yr) = 125 years
+
+(b)(i)  Linear:
+        N(50) = 8.0×10⁹ + (0.16×10⁹)(50) = 8.0×10⁹ + 8.0×10⁹
+        N(50) = 16×10⁹ tonnes/yr  (2.0× today)
+
+   (ii) Exponential:
+        N(50) = (8.0×10⁹)·e^(0.02 × 50) = (8.0×10⁹)·e¹
+        N(50) = 21.7×10⁹ tonnes/yr  (2.7× today)
+
+Exponential growth pulls ahead because each year's increase is proportional
+to the current rate, so the increase itself keeps growing. In either case
+consumption rises, so the reserves would run out well before the 125 years
+found in (a). A "years of supply" figure only holds if consumption stays
+constant.`
+  },
+
+  // ── SOLAR PROJECT (18-19) ──
+  {
+    id:18, topic:"Solar Project", difficulty:"Medium",
+    question:"Q18. Your team builds a standard curve for its temperature sensor: the multimeter reads 4 mV in ice water (0 °C) and 480 mV in boiling water (100 °C).\n\n(a) Derive the linear standard curve, T(°C) = m·(mV) + b.\n(b) During a 45 min outdoor trial, your design (collector area A = 0.060 m², 1.0 L of water, S = 700 W/m²) goes from 95 mV to 150 mV. What are ΔT and the heating efficiency, η = mcΔT/(S·A·t)?\n(c) Your control (A = 0.050 m², 1.0 L of water) warmed by 6.0 °C over the same 45 min. What is its efficiency? Did your design beat the control?",
+    hint:"The slope is m = ΔT/ΔmV between the two calibration points. Notice that ΔT = m(V_{f} - V₀), so the intercept cancels. For the efficiency, E_{in} = S·A·t with t in seconds.",
+    solution:`(a) m = (100 - 0 °C) / (480 - 4 mV) = 100/476 = 0.210 °C/mV
+    Using the point (4 mV, 0 °C): 0 = 0.210(4) + b → b = -0.84 °C
+    T(°C) = 0.210·(mV) - 0.84
+
+(b) ΔT = m(V_{f} - V₀) = 0.210 × (150 - 95) = 11.6 °C
+    (T₀ = 19.1 °C, T_{f} = 30.7 °C)
+    Q = mcΔT = (1,000 g)(4.18 J/g°C)(11.6 °C) = 48,300 J
+    E_{in} = S·A·t = (700 W/m²)(0.060 m²)(45 × 60 s) = 113,400 J
+    η = 48,300 / 113,400 = 0.43 (43%)
+
+(c) Control: Q = (1,000)(4.18)(6.0) = 25,080 J
+    E_{in} = (700)(0.050)(2,700) = 94,500 J
+    η = 25,080 / 94,500 = 0.27 (27%)
+    Yes. The design heats faster (ΔT = 11.6 vs. 6.0 °C) and is more
+    efficient (43% vs. 27%), even after accounting for its larger area.`
+  },
+  {
+    id:19, topic:"Solar Project", difficulty:"Medium",
+    question:"Q19. A portable solar panel measures 0.3 m × 0.09 m and has a 1.8 W output at an efficiency of 19%.\n\n(a) What is the irradiance needed to provide the rated output power?\n(b) This panel is in the sunlight and connected to an immersion heater in a 1 L container of water. How long will it take to increase the temperature of the water from 15 °C to 100 °C (without boiling)? Assume there is no heat loss.\n\n(Practice problem from the Exam I Study Guide.)",
+    hint:"Panel efficiency is η = P_{out}/P_{in}, with P_{in} = S × A. For (b), the heater delivers 1.8 W to the water, so t = Q/P with Q = mcΔT.",
+    solution:`(a) A = 0.3 m × 0.09 m = 0.027 m²
+    η = P_{out} / (S·A)  →  S = P_{out} / (η·A)
+    S = 1.8 W / (0.19 × 0.027 m²) = 351 W/m²
+
+(b) m = 1 L × 1 kg/L = 1,000 g,  ΔT = 100 - 15 = 85 °C
+    Q = mcΔT = (1,000 g)(4.18 J/g°C)(85 °C) = 355,300 J
+    t = Q/P = 355,300 J / (1.8 J/s) = 197,000 s
+    t = 197,000 s / (3600 s/hr) = 54.8 hr  (≈ 2.3 days of full sun)
+
+A small PV panel is a poor way to heat water: it turns only ~19% of
+sunlight into electricity. A solar thermal collector absorbs sunlight
+directly as heat, which is why your project uses thermal collection.`
+  },
+
+  // ── INTEGRATED (20) ──
+  {
+    id:20, topic:"Integrated Exam Problem", difficulty:"Challenge",
+    question:"Q20. The year is 2045. To save energy, the dining hall launches a \"Squirrel-Powered Pasta\" pilot: campus squirrels run on exercise wheels connected to generators.\n\nEach squirrel produces 1.5 W of mechanical power. The generators are 80% efficient, and the induction cooktop is 85% efficient. The pasta station must heat 12 L of water in a 2.5 kg aluminum pot from 15 °C to 100 °C in 30 minutes.\nc_{water} = 4.18 J/(g·°C), c_{Al} = 0.895 J/(g·°C)\n\n(a) How much heat must go into the water and the pot?\n(b) What average electrical power must the cooktop draw?\n(c) How many squirrels must run at the same time?\n(d) A squirrel converts food to mechanical work at 20% efficiency, and acorns contain about 4.0 kcal/g. How many grams of acorns does the crew eat during the 30 minutes? What is the overall acorn-to-water efficiency?\n(e) Doing the same job on a gas stove (40% efficient, CH₄ at 55.5 MJ/kg) burns how much methane and emits how much CO₂? The squirrels exhale CO₂ too. Why can their CO₂ be considered carbon neutral while the methane's cannot?",
+    hint:"Add Q = mcΔT for the water and the pot. Then work backwards through each efficiency: P_{electric} = P_{thermal} / 0.85, and each squirrel supplies 1.5 W × 0.80 of electricity. For (d), each squirrel's food power is 1.5 W / 0.20. Efficiencies in series multiply.",
+    solution:`(a) Water: Q = (12,000 g)(4.18)(85) = 4,263,600 J
+    Pot:   Q = ( 2,500 g)(0.895)(85) =   190,200 J
+    Total: Q = 4,453,800 J ≈ 4.45 MJ
+
+(b) P_{thermal}  = 4.45×10⁶ J / (30 × 60 s) = 2,474 W
+    P_{electric} = 2,474 W / 0.85 = 2,911 W ≈ 2.9 kW
+
+(c) Electricity per squirrel = 1.5 W × 0.80 = 1.2 W
+    N = 2,911 W / 1.2 W = 2,426 squirrels (round up)
+
+(d) Food power per squirrel = 1.5 W / 0.20 = 7.5 W
+    Crew total = 2,426 × 7.5 W = 18,200 W
+    Food energy in 30 min = (18,200 J/s)(1,800 s) = 3.28×10⁷ J
+    Acorns: 4.0 kcal/g × 4,180 J/kcal = 16,720 J/g
+    Acorns eaten = 3.28×10⁷ J / 16,720 J/g ≈ 1,960 g ≈ 2 kg
+
+    Overall η = 0.20 × 0.80 × 0.85 = 0.136 (13.6%)
+    Check: 4.45 MJ / 32.8 MJ = 0.136 ✔
+
+(e) Methane energy = 4.45 MJ / 0.40 = 11.1 MJ
+    m_{CH₄} = 11.1 MJ / (55.5 MJ/kg) = 0.20 kg = 200 g
+    CH₄ + 2O₂ → CO₂ + 2H₂O
+    200 g / 16 g/mol = 12.5 mol CH₄ → 12.5 mol CO₂ × 44 g/mol = 550 g CO₂
+
+    The acorn carbon was pulled out of the air by oak trees within the
+    last year or so, so the squirrels return CO₂ that was recently
+    removed (the biomass cycle). Methane carbon was locked underground
+    for 10⁷ to 10⁸ years, so burning it adds new CO₂ to the atmosphere.
+
+Engineering verdict: 2,400 squirrels is impractical, but the problem
+shows how quickly efficiencies compound in a conversion chain.`
+  }
+];
+
+// ═══════════════════════════════════════
+// FLASH CARDS
+// ═══════════════════════════════════════
+const DECKS = {
+  U: { name:"Units & Conversions", color:"var(--accent-teal)" },
+  E: { name:"Equations",           color:"var(--accent)" },
+  C: { name:"Concepts",            color:"var(--accent-blue)" }
+};
+const CARDS = [
+  // Units & conversions
+  ["U","1 joule (J) in SI base units","1 J = 1 N·m = 1 kg·m²/s²","Energy = force × distance.",true],
+  ["U","1 newton (N) in SI base units","1 N = 1 kg·m/s²","From ΣF = ma.",true],
+  ["U","1 watt (W)","1 W = 1 J/s","Power is a rate. Energy = power × time.",true],
+  ["U","1 kWh in joules","1 kWh = (1000 J/s)(3600 s) = 3.6×10⁶ J","kWh is energy. kW is power.",true],
+  ["U","1 calorie in joules","1 cal = 4.18 J;  1 kcal = 1000 cal","1 cal raises 1 g of water by 1 °C. A food Calorie is 1 kcal.",true],
+  ["U","1 pascal (Pa)","1 Pa = 1 N/m² = 1 J/m³","Pressure = force/area = energy/volume.",true],
+  ["U","1 atm in kPa","1 atm = 101.3 kPa","Follows from 8.314 J = 0.0821 L·atm.",true],
+  ["U","Is L·atm a unit of energy?","Yes: 1 L·atm = 101.3 J","Pressure × volume is energy (E = PV = nRT).",false],
+  ["U","Volume conversions (m³, L, mL, cm³)","1 m³ = 1000 L;  1 L = 1000 mL;  1 cm³ = 1 mL","1 m³ = (100 cm)³ = 10⁶ cm³.",true],
+  ["U","Length conversions (m, ft, in, mi)","1 m = 3.28 ft;  1 ft = 12 in;  1 in = 2.54 cm;  1 mi = 5280 ft","Convert mi/hr to m/s before using KE = ½mv².",true],
+  ["U","Mass conversions (kg, lb, oz, tonne)","1 kg = 2.2 lb;  1 lb = 16 oz;  1 tonne = 1000 kg","1 megatonne (Mt) = 10⁶ tonnes = 10⁹ kg.",true],
+  ["U","Converting mAh to coulombs","1 mAh = (10⁻³ A)(3600 s) = 3.6 C","1 A = 1 C/s. Battery energy E = V × charge.",true],
+  ["U","1 volt; 1 ampere","1 V = 1 J/C;  1 A = 1 C/s","So V × A = J/s = W.",true],
+  ["U","Absolute temperature scales","K = °C + 273;  °R = °F + 459.7","Use absolute T in PV = nRT, Carnot, and ΔG = ΔH - TΔS.",true],
+  ["U","Celsius ↔ Fahrenheit","°F = 1.8·°C + 32;  °C = (°F - 32)/1.8","Water: 0 °C = 32 °F and 100 °C = 212 °F.",true],
+  ["U","A temperature CHANGE of 1 °C equals…","ΔT: 1 °C = 1 K = 1.8 °F = 1.8 °R","The +32 offset cancels for a temperature difference.",false],
+  ["U","SI prefixes: n, μ, m, c, k, M, G, T","10⁻⁹, 10⁻⁶, 10⁻³, 10⁻², 10³, 10⁶, 10⁹, 10¹²","nano, micro, milli, centi, kilo, mega, giga, tera.",false],
+  ["U","Gas constant R","8.314 J/(mol·K) = 0.0821 L·atm/(mol·K)","The units are always energy/(mol·K). Pick the value that matches your P and V units.",true],
+  ["U","g, acceleration due to gravity","g = 9.8 m/s² = 9.8 N/kg = 32.2 ft/s²","",true],
+  ["U","Heat capacity of liquid water (three units)","c = 1 cal/(g·°C) = 4.18 J/(g·°C) = 1 BTU/(lb·°F)","c_{ice} ≈ 2.1 and c_{steam} ≈ 2.0 J/(g·°C).",true],
+  ["U","ppmv","1 ppmv = 1 m³ of gas per 10⁶ m³ of air","A volume fraction × 10⁻⁶. Convert to moles with PV = nRT.",false],
+  ["U","Units of irradiance, S","W/m²: joules of sunlight per second per square meter","Solar energy collected: E_{in} = S × A × t.",false],
+
+  // Equations
+  ["E","Newton's second law","ΣF = ma","A person at rest: ΣF = 0, so F_{normal} = F_{gravity}.",true],
+  ["E","Work","W = F × d","Units: N·m = J.",true],
+  ["E","Gravitational potential energy","PE = mgh","Work done lifting an object against gravity.",true],
+  ["E","Kinetic energy","KE = ½mv²","v in m/s and m in kg gives joules. Setting mgh = ½mv² gives v = √(2gh).",true],
+  ["E","Pressure","P = F/A","Mass of an atmosphere: m = P·A/g, with A = 4πR² for a planet.",true],
+  ["E","Ideal gas law","PV = nRT","T must be absolute (K). Match R to your units.",true],
+  ["E","Gas density from the ideal gas law","ρ = PM/(RT)","Substitute n = m/M into PV = nRT. Air at room T: ~1.2 kg/m³.",true],
+  ["E","Power (energy basis)","P = E/t","",true],
+  ["E","Electrical power and Ohm's law","P = IV;  V = IR","Power lost in a wire: P = I²R.",true],
+  ["E","Sensible heat","Q = mcΔT","As a rate: P = ṁcΔT, where ṁ = V̇ρ.",true],
+  ["E","Latent heat","Q = m·ΔH_{fus} (melting)  or  Q = m·ΔH_{vap} (boiling)","Temperature stays constant during a phase change. Know the concept; values will be given.",true],
+  ["E","First Law (our convention)","ΔU = Q + W","Q > 0: heat into the system. W > 0: work done ON the system.",true],
+  ["E","Pressure-volume work","W = -PΔV","Expansion (ΔV > 0) gives W < 0: the system does work.",true],
+  ["E","Enthalpy","H = U + PV;  ΔH = ΔU + PΔV","At constant pressure, Q = ΔH.",true],
+  ["E","Gibbs free energy","ΔG = ΔH - TΔS","ΔG < 0: spontaneous. T in K; convert ΔS from J to kJ.",true],
+  ["E","Heat engine energy balance","|Q_{H}| = |W| + |Q_{C}|","First Law applied to the engine.",true],
+  ["E","Heat engine efficiency","η = W/Q_{H} = 1 - Q_{C}/Q_{H}","",true],
+  ["E","Carnot (maximum) efficiency","η_{C} = 1 - T_{C}/T_{H}","Absolute temperatures only. Also Q_{C}/Q_{H} = T_{C}/T_{H}.",true],
+  ["E","General efficiency","η = useful energy out / energy in","Always 0 ≤ η ≤ 1.",true],
+  ["E","Overall efficiency of a conversion chain","η_{overall} = η₁ × η₂ × η₃ × …","Solar demo: 0.854 × 0.788 × 0.135 ≈ 0.091.",true],
+  ["E","Solar heater efficiency","η = mcΔT / (S·A·t)","Energy into the water divided by the sunlight on the collector.",true],
+  ["E","Linear growth","N(t) = N₀ + (dN/dt)·t","A straight line on a linear plot.",true],
+  ["E","Exponential growth","dN/dt = aN  →  N(t) = N₀e^(at)","Take the natural log to solve for a or t: ln(N/N₀) = at.",true],
+  ["E","Standard curve (sensor calibration)","T = m·(mV) + b,  m = ΔT/ΔmV","ΔT = m(V_{f} - V₀): the intercept cancels.",true],
+
+  // Concepts
+  ["C","Zeroth Law","If A and C are in thermal equilibrium, and B and C are too, then A and B are in thermal equilibrium.","Introduces temperature (C is a thermometer). \"There is a game.\"",false],
+  ["C","First Law","Energy is conserved: it cannot be created or destroyed, only converted.","\"You can't win.\"",false],
+  ["C","Second Law","Entropy of an isolated system increases; no device can convert heat completely into work.","\"You can't break even.\" This sets the Carnot limit.",false],
+  ["C","Third Law","Absolute zero (0 K) cannot be reached.","At 0 K entropy would be zero, which requires infinite energy.",false],
+  ["C","Exothermic vs. endothermic","Exothermic: ΔH < 0, heat released (bond forming, combustion). Endothermic: ΔH > 0, heat absorbed (bond breaking, melting, boiling).","",false],
+  ["C","ΔG sign table","ΔH < 0, ΔS > 0: always spontaneous.  ΔH > 0, ΔS < 0: never.  ΔH < 0, ΔS < 0: at low T.  ΔH > 0, ΔS > 0: at high T.","Crossover at T = ΔH/ΔS.",false],
+  ["C","Power vs. energy","Energy (J, kWh) is an amount. Power (W = J/s) is a rate.","A 100 W bulb on for 1 h uses 0.1 kWh.",false],
+  ["C","Forms of energy","Kinetic, potential, thermal, chemical, electrical, electromagnetic, nuclear","The First Law lets you convert between them.",false],
+  ["C","Sankey diagram","A flow diagram whose line widths are proportional to energy flows, from sources to end uses and rejected energy.","U.S. 2023: 93.6 quads used, ~66% rejected as waste heat.",false],
+  ["C","Gravimetric vs. volumetric vs. molar energy density","MJ/kg (weight matters), MJ/L (space matters), MJ/mol (stoichiometry)","Gravimetric: H₂ > CH₄ > gasoline > coal. Molar: octane > methane > coal > H₂.",false],
+  ["C","Typical conversion efficiencies","Chemical → thermal 80-95%;  thermal → mechanical 20-40%;  mechanical → electrical 90-95%;  electrical → mechanical 85-95%;  electrical → thermal > 99%","The heat engine step is the bottleneck.",false],
+  ["C","How fossil fuels form","Organic matter + heat + pressure under anaerobic conditions over 10⁷ to 10⁸ years","Oil and gas from marine organisms; coal from land plants (~0.8% of the plant carbon becomes coal).",false],
+  ["C","Why we rely on fossil fuels","Familiar, inexpensive, abundant, high energy density, easily stored and transported, fit existing infrastructure","",false],
+  ["C","Drawbacks of fossil fuels","CO₂ emissions, finite supply, air and water pollution, extraction hazards (mining, spills, fracking fluids)","",false],
+  ["C","Fracking (hydraulic fracturing)","Injecting pressurized water plus additives to fracture rock and release gas or oil","Main concern: contamination of the water supply.",false],
+].map((c, i) => ({ id:i, deck:c[0], front:c[1], back:c[2], note:c[3], monoBack:c[4] }));
+
+// ═══════════════════════════════════════
+// STUDY GUIDE (imported from the Exam I Study Guide)
+// ═══════════════════════════════════════
+const GUIDE = [
+  { title:"Mathematics", items:[
+    { html:"<b>Dimensional analysis:</b> Understand the different units we have covered in class, know the simple unit conversions; more complex conversions will be given, if needed", q:[1,2], deck:"U" },
+    { html:"<b>Scientific notation</b>", q:[14,17] }
+  ]},
+  { title:"Chemical Engineering Principles", items:[
+    { html:"<b>Basic Physics:</b> <span class='eq'>F = ma</span>, <span class='eq'>W = Fd</span>, <span class='eq'>KE = ½mv²</span>, <span class='eq'>PE = mgh</span>, <span class='eq'>PV = nRT</span>, <span class='eq'>P = F/A</span>", q:[3,4,5,8] },
+    { html:"<b>Stoichiometry:</b> Balancing an equation, converting from mass of one reactant to mass of a product or vice versa", q:[6,14,15] },
+    { html:"<b>Basic Thermodynamics:</b> 0th, 1st, 2nd and 3rd Laws", deck:"C", subs:[
+      { html:"<span class='eq'>ΔU = Q + W</span> (First Law)", q:[7,8] },
+      { html:"<span class='eq'>W = -PΔV</span>", q:[8] },
+      { html:"<span class='eq'>H = U + PV</span> (Enthalpy)", q:[8] },
+      { html:"<span class='eq'>ΔG = ΔH - TΔS</span> (Gibbs Free Energy)", q:[12] },
+      { html:"<span class='eq'>Q = mcΔT</span>", q:[9,10] },
+      { html:"Latent heat of fusion, vaporization (concepts, not the values)", q:[9,10] },
+      { html:"Exothermic versus endothermic reactions", q:[12] },
+      { html:"Heat engines, Carnot efficiency, temperature conversions", q:[11] }
+    ]}
+  ]},
+  { title:"Energy Technologies", items:[
+    { html:"<b>Energy Types:</b> Be able to discuss the various forms of energy (potential, kinetic, thermal, electromagnetic, electrical, chemical, nuclear, etc.) and utilize the First Law of Thermodynamics to convert between each", q:[3,4,20], subs:[
+      { html:"Difference between Power and Energy", q:[3,10] },
+      { html:"Sankey Diagrams", deck:"C" },
+      { html:"Energy Density: Convert between gravimetric/volumetric/molar energy density, what is the significance of each?", q:[13] }
+    ]},
+    { html:"<b>Fossil Fuels:</b> Coal, natural gas, crude oil, etc.", q:[14,15], subs:[
+      { html:"Understand the basics and advantages/disadvantages of fossil fuels", q:[15], deck:"C" }
+    ]}
+  ]},
+  { title:"Also Covered in Lecture", note:"Lectures 5 and 7 (Exam I covers through L9)", added:true, items:[
+    { html:"<b>Exponential Growth:</b> Linear vs. exponential growth; finding the growth rate from data and projecting forward", q:[16,17] },
+    { html:"<b>Solar Heater Project:</b> Heating efficiency <span class='eq'>η = mcΔT/(S·A·t)</span>, efficiencies in series, and standard curves", q:[18,19,20] }
+  ]}
+];
+
+// ═══════════════════════════════════════
+// APP STATE & STORAGE (per-browser conveniences only)
+// ═══════════════════════════════════════
+const STORE_KEY = "che150_exam1_v1";
+function loadStore() { try { return JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch (e) { return {}; } }
+function saveStore() { try { localStorage.setItem(STORE_KEY, JSON.stringify(store)); } catch (e) {} }
+const store = loadStore();
+store.guide = store.guide || {};
+store.known = store.known || {};
+
+let currentFilter = "All";
+let currentTab = "home";
+
+function escapeHtml(text) {
+  return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+// Escape, then turn X_{sub} into a real subscript and [[answer]] into a highlighted answer.
+function fmt(text) {
+  return escapeHtml(text)
+    .replace(/_\{([^}]*)\}/g, '<sub>$1</sub>')
+    .replace(/\[\[([\s\S]*?)\]\]/g, '<span class="ans">$1</span>');
+}
+
+// ── Tabs ──
+function switchTab(id, opts) {
+  currentTab = id;
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === id));
+  if (id === 'problems') renderProblems();
+  if (id === 'cards') renderCard();
+  if (id === 'guide') renderGuide();
+  if (id === 'home') updateHomeStats();
+  const activeBtn = document.querySelector('.tab-btn.active');
+  if (activeBtn && activeBtn.scrollIntoView) activeBtn.scrollIntoView({ block:'nearest', inline:'nearest' });
+  if (!opts || !opts.keepScroll) window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+// ── Home ──
+function renderTopics() {
+  const grid = document.getElementById('topicsGrid');
+  grid.innerHTML = Object.entries(TOPICS).map(([name, t]) =>
+    `<button class="topic-badge" style="color:${t.color};background:rgba(${t.rgb},0.06);border-color:rgba(${t.rgb},0.22)" onclick="filterFromHome('${name.replace(/'/g,"\\'")}')">${t.icon} ${escapeHtml(name)}</button>`
+  ).join('');
+}
+function filterFromHome(topic) { currentFilter = topic; switchTab('problems'); }
+function guideStats() {
+  let total = 0, done = 0;
+  GUIDE.forEach((sec, si) => sec.items.forEach((it, ii) => {
+    const k = si + '.' + ii; total++; if (store.guide[k]) done++;
+    (it.subs || []).forEach((s, ssi) => { total++; if (store.guide[k + '.' + ssi]) done++; });
+  }));
+  return { total, done };
+}
+function updateHomeStats() {
+  document.getElementById('statProblems').textContent = PROBLEMS.length;
+  document.getElementById('statCards').textContent = CARDS.length;
+  const g = guideStats();
+  document.getElementById('statGuide').textContent = Math.round(100 * g.done / g.total) + '%';
+}
+
+// ── Study guide ──
+function linkTags(q, deck) {
+  let h = '';
+  (q || []).forEach(n => { h += `<button class="qlink" onclick="event.preventDefault();event.stopPropagation();openProblem(${n})">Q${n}</button>`; });
+  if (deck) h += `<button class="qlink deck" onclick="event.preventDefault();event.stopPropagation();openDeck('${deck}')">${DECKS[deck].name} cards</button>`;
+  return h ? `<span class="links">${h}</span>` : '';
+}
+function renderGuide() {
+  const grid = document.getElementById('guideGrid');
+  let html = '';
+  GUIDE.forEach((sec, si) => {
+    html += `<div class="guide-block${sec.added ? ' added' : ''}"><div class="guide-head"><div class="guide-title">${sec.title}</div>${sec.note ? `<div class="guide-note">${sec.note}</div>` : ''}</div><ul class="guide-list">`;
+    sec.items.forEach((it, ii) => {
+      const k = si + '.' + ii; const on = !!store.guide[k];
+      html += `<li class="guide-item${on ? ' done' : ''}"><input type="checkbox" id="g-${si}-${ii}" ${on ? 'checked' : ''} onchange="toggleGuide('${k}', this.checked)"><div><label for="g-${si}-${ii}">${it.html}</label>${linkTags(it.q, it.deck)}`;
+      if (it.subs) {
+        html += '<ul class="sub-list">';
+        it.subs.forEach((s, ssi) => {
+          const sk = k + '.' + ssi; const son = !!store.guide[sk];
+          html += `<li class="${son ? 'done' : ''}"><input type="checkbox" id="g-${si}-${ii}-${ssi}" ${son ? 'checked' : ''} onchange="toggleGuide('${sk}', this.checked)"><div><label for="g-${si}-${ii}-${ssi}"><span class="txt">${s.html}</span></label>${linkTags(s.q, s.deck)}</div></li>`;
+        });
+        html += '</ul>';
+      }
+      html += '</div></li>';
+    });
+    html += '</ul></div>';
+  });
+
+  html += `<div class="guide-block"><div class="guide-head"><div class="guide-title">Review Course Materials</div></div>
+    <p class="quote">Be sure you know how to do all HW problems, practice problems, and all problems covered in class. Replicating the solutions with given constants/parameters is a better method of studying than reviewing the answer.</p>
+    <p class="quote" style="margin-top:10px">The study guide's practice problem (portable solar panel and immersion heater) is worked out in ${'<button class="qlink" onclick="openProblem(19)">Q19</button>'}.</p></div>`;
+
+  html += `<div class="guide-block"><div class="guide-head"><div class="guide-title">Recommended Equation Sheet</div><div class="guide-note">A starting point for your notes sheet</div></div>
+    <div class="eqsheet">
+      <div class="eq-group"><h4>Conversions</h4><ul>
+        <li>1 m = 3.28 ft</li><li>1 in = 2.54 cm</li><li>1 ft = 12 in</li><li>1 kg = 2.2 lbs</li>
+        <li>K - 273 = °C</li><li>°R - 459.7 = °F</li><li>1 cal = 4.18 J</li>
+      </ul></div>
+      <div class="eq-group"><h4>Constants</h4><ul>
+        <li>c = 1 cal/(g·°C) = 4.18 J/(g·°C) = 1 BTU/(lb·°F)</li>
+        <li>R = 8.314 J/(mol·K) = 0.0821 L·atm/(mol·K)</li>
+        <li>g = 9.8 m/s² = 9.8 N/kg = 32.2 ft/s²</li>
+      </ul></div>
+      <div class="eq-group"><h4>Mechanics &amp; Gases</h4><ul>
+        <li>ΣF = ma</li><li>P = F/A</li><li>PE = mgh</li><li>KE = ½mv²</li><li>PV = nRT</li>
+      </ul></div>
+      <div class="eq-group"><h4>Thermodynamics</h4><ul>
+        <li>Q = mcΔT</li><li>ΔU = Q + W</li><li>W = -pΔV</li><li>ΔH = ΔU + PΔV</li><li>ΔG = ΔH - TΔS</li>
+      </ul></div>
+      <div class="eq-group"><h4>Heat Engines &amp; Power</h4><ul>
+        <li>|Q<sub>H</sub>| = |Q<sub>c</sub>| + |W|</li><li>T<sub>c</sub>/T<sub>H</sub> = Q<sub>c</sub>/Q<sub>H</sub></li>
+        <li>η = W/Q<sub>H</sub> <small>(heat engines)</small></li><li>η = W/E<sub>in</sub> <small>(generalized definition)</small></li>
+        <li>P = E/t</li><li>P = IV</li><li>V = IR</li>
+      </ul></div>
+      <div class="eq-group"><h4>Unit Prefixes</h4><ul>
+        <li>Nano 10⁻⁹, Micro 10⁻⁶, Milli 10⁻³</li><li>Kilo 10³, Mega 10⁶, Giga 10⁹</li><li>Tera 10¹²</li>
+      </ul></div>
+      <div class="eq-group"><h4>Misc.</h4><p>One calorie is the energy required to raise the temperature of one gram of water by one degree Celsius.</p></div>
+    </div></div>`;
+
+  grid.innerHTML = html;
+  const g = guideStats();
+  document.getElementById('guideProgress').textContent = `${g.done} of ${g.total} items checked off`;
+}
+function toggleGuide(k, on) {
+  if (on) store.guide[k] = 1; else delete store.guide[k];
+  saveStore(); renderGuide();
+}
+function openProblem(n) {
+  currentFilter = "All";
+  switchTab('problems', { keepScroll:true });
+  const card = document.getElementById('problem-' + n);
+  if (!card) return;
+  setOpen(n, true);
+  card.classList.add('flash');
+  setTimeout(() => card.classList.remove('flash'), 1600);
+  const top = card.getBoundingClientRect().top + window.scrollY - 76;
+  window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
+}
+function openDeck(d) { fcDeck = d; fcIndex = 0; buildOrder(); switchTab('cards'); }
+
+// ── Flash cards ──
+let fcDeck = "All", fcIndex = 0, fcFlipped = false, fcReverse = false, fcHideKnown = false, fcOrder = [];
+function buildOrder(shuffle) {
+  let list = CARDS.filter(c => fcDeck === "All" || c.deck === fcDeck);
+  if (fcHideKnown) list = list.filter(c => !store.known[c.id]);
+  fcOrder = list.map(c => c.id);
+  if (shuffle) {
+    for (let i = fcOrder.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [fcOrder[i], fcOrder[j]] = [fcOrder[j], fcOrder[i]]; }
+  }
+  if (fcIndex >= fcOrder.length) fcIndex = 0;
+}
+function renderDeckBar() {
+  const bar = document.getElementById('deckBar');
+  const count = d => CARDS.filter(c => d === "All" || c.deck === d).length;
+  let h = `<button class="filter-chip ${fcDeck==='All'?'active':''}" onclick="setDeck('All')">All (${count('All')})</button>`;
+  Object.entries(DECKS).forEach(([k, d]) => { h += `<button class="filter-chip ${fcDeck===k?'active':''}" onclick="setDeck('${k}')">${d.name} (${count(k)})</button>`; });
+  bar.innerHTML = h;
+}
+function setDeck(d) { fcDeck = d; fcIndex = 0; fcFlipped = false; buildOrder(); renderCard(); }
+function setReverse(on) { fcReverse = on; fcFlipped = false; renderCard(); }
+function setHideKnown(on) { fcHideKnown = on; fcIndex = 0; fcFlipped = false; buildOrder(); renderCard(); }
+function shuffleCards() { fcIndex = 0; fcFlipped = false; buildOrder(true); renderCard(); }
+function resetKnown() {
+  const ids = CARDS.filter(c => fcDeck === "All" || c.deck === fcDeck).map(c => c.id);
+  ids.forEach(id => delete store.known[id]); saveStore();
+  fcIndex = 0; fcFlipped = false; buildOrder(); renderCard();
+}
+function renderCard() {
+  renderDeckBar();
+  document.getElementById('fcReverse').checked = fcReverse;
+  document.getElementById('fcHideKnown').checked = fcHideKnown;
+  const deckCards = CARDS.filter(c => fcDeck === "All" || c.deck === fcDeck);
+  const knownN = deckCards.filter(c => store.known[c.id]).length;
+  document.getElementById('fcKnownCount').textContent = `Known: ${knownN} / ${deckCards.length}`;
+  document.getElementById('fcProgress').style.width = (100 * knownN / deckCards.length) + '%';
+  const area = document.getElementById('fcArea');
+  if (!fcOrder.length) {
+    document.getElementById('fcPosition').textContent = '0 cards';
+    area.innerHTML = `<div class="fc-empty"><b>You know every card in this deck.</b>Turn off "Hide cards I know" to review them again, or reset your progress.</div>`;
+    return;
+  }
+  const c = CARDS[fcOrder[fcIndex]];
+  document.getElementById('fcPosition').textContent = `Card ${fcIndex + 1} of ${fcOrder.length}`;
+  const d = DECKS[c.deck];
+  const front = fcReverse ? c.back : c.front;
+  const back = fcReverse ? c.front : c.back;
+  const frontMono = fcReverse && c.monoBack;
+  const backMono = !fcReverse && c.monoBack;
+  const known = !!store.known[c.id];
+  area.innerHTML = `
+    <div class="fc-stage">
+      <div class="fc-card ${fcFlipped ? 'flipped' : ''}" id="fcCard" role="button" tabindex="0" aria-label="Flash card, click to flip" onclick="flipCard()">
+        <div class="fc-face fc-front">
+          <div class="fc-deck-tag" style="color:${d.color}">${d.name}${known ? ' · known' : ''}</div>
+          <div class="fc-prompt ${frontMono ? 'mono' : ''}">${fmt(front)}</div>
+          <div class="fc-hintline">Click or press Space to flip</div>
+        </div>
+        <div class="fc-face fc-back">
+          <div class="fc-deck-tag" style="color:var(--accent)">${fcReverse ? 'Name' : 'Answer'}</div>
+          <div class="fc-answer ${backMono ? 'mono' : ''}">${fmt(back)}</div>
+          ${c.note ? `<div class="fc-note">${fmt(c.note)}</div>` : ''}
+        </div>
+      </div>
+    </div>
+    <div class="fc-controls">
+      <button class="fc-btn" onclick="prevCard()">← Previous</button>
+      <button class="fc-btn again" onclick="markCard(false)">Still learning</button>
+      <button class="fc-btn know" onclick="markCard(true)">I know it ✓</button>
+      <button class="fc-btn" onclick="nextCard()">Next →</button>
+    </div>`;
+}
+function flipCard() {
+  fcFlipped = !fcFlipped;
+  const el = document.getElementById('fcCard');
+  if (el) el.classList.toggle('flipped', fcFlipped);
+}
+function nextCard() { if (!fcOrder.length) return; fcIndex = (fcIndex + 1) % fcOrder.length; fcFlipped = false; renderCard(); }
+function prevCard() { if (!fcOrder.length) return; fcIndex = (fcIndex - 1 + fcOrder.length) % fcOrder.length; fcFlipped = false; renderCard(); }
+function markCard(know) {
+  if (!fcOrder.length) return;
+  const id = fcOrder[fcIndex];
+  if (know) store.known[id] = 1; else delete store.known[id];
+  saveStore();
+  if (know && fcHideKnown) {
+    fcOrder.splice(fcIndex, 1);
+    if (fcIndex >= fcOrder.length) fcIndex = 0;
+    fcFlipped = false; renderCard();
+  } else { nextCard(); }
+}
+document.addEventListener('keydown', e => {
+  if (currentTab !== 'cards') return;
+  const tag = (e.target.tagName || '').toLowerCase();
+  if (tag === 'input' || tag === 'textarea') return;
+  if (e.key === ' ' || e.key === 'Enter') {
+    if (tag === 'button' && e.target.id !== 'fcCard') return;
+    e.preventDefault(); flipCard();
+  }
+  else if (e.key === 'ArrowRight') nextCard();
+  else if (e.key === 'ArrowLeft') prevCard();
+  else if (e.key === 'k' || e.key === 'K') markCard(true);
+});
+
+// ── Problems ──
+const openSet = new Set();
+function renderProblems() {
+  const topics = [...new Set(PROBLEMS.map(p => p.topic))];
+  const bar = document.getElementById('filterBar');
+  let h = `<button class="filter-chip ${currentFilter==='All'?'active':''}" onclick="setFilter('All')">All (${PROBLEMS.length})</button>`;
+  topics.forEach(t => {
+    const count = PROBLEMS.filter(p => p.topic === t).length;
+    h += `<button class="filter-chip ${currentFilter===t?'active':''}" onclick="setFilter('${t.replace(/'/g,"\\'")}')">${TOPICS[t].icon} ${escapeHtml(t)} (${count})</button>`;
+  });
+  bar.innerHTML = h;
+
+  const filtered = currentFilter === 'All' ? PROBLEMS : PROBLEMS.filter(p => p.topic === currentFilter);
+  document.getElementById('problemCount').textContent = `${filtered.length} problem${filtered.length !== 1 ? 's' : ''}`;
+  const list = document.getElementById('problemList');
+  list.innerHTML = '';
+  filtered.forEach(p => {
+    const t = TOPICS[p.topic];
+    const diffClass = { Easy:'diff-easy', Medium:'diff-medium', Hard:'diff-hard', Challenge:'diff-challenge' }[p.difficulty];
+    const card = document.createElement('div');
+    card.className = 'problem-card' + (openSet.has(p.id) ? ' open' : '');
+    card.id = 'problem-' + p.id;
+    card.innerHTML = `
+      <button class="problem-header" onclick="toggleProblem(${p.id})" aria-expanded="${openSet.has(p.id)}" aria-controls="actions-${p.id}">
+        <span class="problem-tags">
+          <span class="problem-topic" style="color:${t.color}">${t.icon} ${escapeHtml(p.topic)}</span>
+          <span class="difficulty-badge ${diffClass}">${p.difficulty}</span>
+        </span>
+        <span class="expand-icon">▼</span>
+      </button>
+      <div class="problem-text" onclick="toggleProblem(${p.id})">${fmt(p.question)}</div>
+      <div class="problem-actions" id="actions-${p.id}" ${openSet.has(p.id) ? '' : 'hidden'}>
+        <button class="action-btn" onclick="toggleBox('hint', ${p.id})">💡 <span id="hint-label-${p.id}">Show Hint</span></button>
+        <div class="hint-box" id="hint-${p.id}" hidden>${fmt(p.hint)}</div>
+        <button class="action-btn" onclick="toggleBox('sol', ${p.id})">📋 <span id="sol-label-${p.id}">Show Worked Solution</span></button>
+        <div class="solution-wrap" id="sol-${p.id}" hidden><div class="solution-box">${fmt(p.solution)}</div></div>
+      </div>`;
+    list.appendChild(card);
+  });
+  document.getElementById('collapseAll').hidden = openSet.size === 0;
+}
+function setFilter(f) { currentFilter = f; renderProblems(); }
+function setOpen(id, open) {
+  const card = document.getElementById('problem-' + id);
+  if (!card) return;
+  const actions = document.getElementById('actions-' + id);
+  if (open) openSet.add(id); else openSet.delete(id);
+  actions.hidden = !open;
+  card.classList.toggle('open', open);
+  card.querySelector('.problem-header').setAttribute('aria-expanded', open);
+  document.getElementById('collapseAll').hidden = openSet.size === 0;
+}
+function toggleProblem(id) { setOpen(id, !openSet.has(id)); }
+function toggleBox(kind, id) {
+  const el = document.getElementById(kind + '-' + id);
+  const label = document.getElementById(kind + '-label-' + id);
+  el.hidden = !el.hidden;
+  const word = kind === 'hint' ? 'Hint' : 'Worked Solution';
+  label.textContent = (el.hidden ? 'Show ' : 'Hide ') + word;
+}
+function collapseAll() { [...openSet].forEach(id => setOpen(id, false)); openSet.clear(); renderProblems(); }
+
+// ── Init ──
+document.addEventListener('DOMContentLoaded', () => {
+  renderTopics();
+  updateHomeStats();
+  buildOrder();
+  const h = (location.hash || '').replace('#', '');
+  if (['guide','cards','problems','home'].includes(h)) switchTab(h);
+});
+</script>
+
+</body></html>
