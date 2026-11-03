@@ -1,6 +1,6 @@
 # CHE 150: Introduction to Sustainable Energy
 
-[Open the Exam I study guide](https://mporosoff.github.io/CHE150/).
+[Open the Exam study guide](https://mporosoff.github.io/CHE150/).
 
 ## GitHub Pages
 
