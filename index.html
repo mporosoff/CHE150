@@ -1,5 +1,9 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>CHE 150 Exam I Prep</title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>CHE 150 Exam Prep</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
@@ -297,7 +301,17 @@ kbd { font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 1px 6px
   .welcome-box { padding: 22px 18px; }
   .guide-block { padding: 18px 16px; }
 }
+
+/* Exam switch */
+.exam-switch { margin-left: auto; display: inline-flex; gap: 2px; padding: 3px; border-radius: 11px; background: var(--bg-card); border: 1px solid var(--border); }
+.exam-btn { padding: 7px 14px; border: none; border-radius: 8px; background: transparent; color: var(--text-secondary); font-size: 13px; font-weight: 600; letter-spacing: 0.02em; cursor: pointer; transition: background 0.2s, color 0.2s; white-space: nowrap; }
+.exam-btn:hover { color: var(--text-primary); }
+.exam-btn.active { background: var(--accent-soft); color: var(--accent); box-shadow: inset 0 0 0 1px var(--border-accent); }
+.qlink.ex1 { border-color: rgba(167,139,250,0.35); background: rgba(167,139,250,0.08); color: var(--accent-purple); font-family: 'IBM Plex Sans', sans-serif; }
+@media (max-width: 640px) { .exam-btn { padding: 6px 10px; font-size: 12px; } }
 </style>
+</head>
+<body>
 <div class="header">
   <div class="container">
     <div class="header-inner">
@@ -305,8 +319,12 @@ kbd { font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 1px 6px
         <svg viewBox="0 0 24 24" fill="none" stroke="#1c1204" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2" fill="#1c1204"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/></svg>
       </div>
       <div class="title">CHE 150</div>
+      <div class="exam-switch" role="group" aria-label="Choose an exam">
+        <button class="exam-btn" data-exam="1" onclick="switchExam('1')">Exam I</button>
+        <button class="exam-btn" data-exam="2" onclick="switchExam('2')">Exam II</button>
+      </div>
     </div>
-    <div class="subtitle">Introduction to Sustainable Energy | Exam I Study Tool</div>
+    <div class="subtitle" id="subtitle">Introduction to Sustainable Energy | Exam II Study Tool</div>
   </div>
 </div>
 <div class="tabbar">
@@ -326,18 +344,9 @@ kbd { font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 1px 6px
     <!-- HOME -->
     <div id="tab-home" class="section active">
       <div class="welcome-box">
-        <div class="welcome-title">Get ready for Exam I</div>
-        <div class="welcome-text">
-          <p>This tool covers CHE 150 from Lecture 1 through Lecture 9: units and dimensional analysis, forms of energy, the ideal gas law, the four laws of thermodynamics, heat and phase changes, heat engines, energy density, fossil fuels, exponential growth, and the solar heater project. It is built from Prof. Porosoff's lectures, homework, and the Exam I study guide.</p>
-          <p><strong>Study Guide</strong> is the official topic list and recommended equation sheet, with a checklist and links to matching practice.<br>
-          <strong>Flash Cards</strong> drill the units, conversions, equations, and concepts you need to recall quickly.<br>
-          <strong>Practice Problems</strong> are 20 exam-style problems, each with a hint and a fully worked solution.</p>
-        </div>
-        <div class="exam-strip">
-          <span><b>Exam I:</b> Tuesday, Oct. 6, 3:25-4:40 pm, Goergen 108</span>
-          <span><b>Covers:</b> Lectures 1 to 9</span>
-          <span><b>Bring:</b> a calculator and 1 sheet of handwritten notes (front and back)</span>
-        </div>
+        <div class="welcome-title" id="welcomeTitle">Get ready for Exam I</div>
+        <div class="welcome-text" id="welcomeText"></div>
+        <div class="exam-strip" id="examStrip"></div>
       </div>
       <div class="stats-grid">
         <button class="stat-card" onclick="switchTab('problems')">
@@ -360,8 +369,8 @@ kbd { font-family: 'IBM Plex Mono', monospace; font-size: 11px; padding: 1px 6px
 
     <!-- STUDY GUIDE -->
     <div id="tab-guide" class="section">
-      <p class="section-lead">The Exam I study guide, topic by topic. Check off each item once you can do it without notes. The tags next to each item jump to matching practice problems (<span class="qlink" style="cursor:default">Q1</span>) or flash card decks (<span class="qlink deck" style="cursor:default">Cards</span>).</p>
-      <div class="notes-callout"><b>Exam I:</b> Tuesday, Oct. 6, 3:25-4:40 pm, Goergen 108. You may bring <b>1 sheet of handwritten notes</b> (front and back). Building that sheet from this guide and the equation sheet below is good studying in itself.</div>
+      <p class="section-lead" id="guideLead">The Exam I study guide, topic by topic. Check off each item once you can do it without notes. The tags next to each item jump to matching practice problems (<span class="qlink" style="cursor:default">Q1</span>) or flash card decks (<span class="qlink deck" style="cursor:default">Cards</span>).</p>
+      <div class="notes-callout" id="notesCallout"></div>
       <div class="guide-progress" id="guideProgress"></div>
       <div class="guide-grid" id="guideGrid"></div>
     </div>
@@ -415,7 +424,7 @@ const TOPICS = {
 // ═══════════════════════════════════════
 // PRACTICE PROBLEMS (20 total)
 // ═══════════════════════════════════════
-const PROBLEMS = [
+const PROBLEMS_1 = [
   // ── UNITS & CONVERSIONS (1-2) ──
   {
     id:1, topic:"Units & Conversions", difficulty:"Easy",
@@ -921,12 +930,12 @@ shows how quickly efficiencies compound in a conversion chain.`
 // ═══════════════════════════════════════
 // FLASH CARDS
 // ═══════════════════════════════════════
-const DECKS = {
+const DECKS_1 = {
   U: { name:"Units & Conversions", color:"var(--accent-teal)" },
   E: { name:"Equations",           color:"var(--accent)" },
   C: { name:"Concepts",            color:"var(--accent-blue)" }
 };
-const CARDS = [
+const CARDS_1 = [
   // Units & conversions
   ["U","1 joule (J) in SI base units","1 J = 1 N·m = 1 kg·m²/s²","Energy = force × distance.",true],
   ["U","1 newton (N) in SI base units","1 N = 1 kg·m/s²","From ΣF = ma.",true],
@@ -998,7 +1007,7 @@ const CARDS = [
 // ═══════════════════════════════════════
 // STUDY GUIDE (imported from the Exam I Study Guide)
 // ═══════════════════════════════════════
-const GUIDE = [
+const GUIDE_1 = [
   { title:"Mathematics", items:[
     { html:"<b>Dimensional analysis:</b> Understand the different units we have covered in class, know the simple unit conversions; more complex conversions will be given, if needed", q:[1,2], deck:"U" },
     { html:"<b>Scientific notation</b>", q:[14,17] }
@@ -1033,6 +1042,591 @@ const GUIDE = [
   ]}
 ];
 
+function guideExtra1() {
+  return `<div class="guide-block"><div class="guide-head"><div class="guide-title">Review Course Materials</div></div>
+    <p class="quote">Be sure you know how to do all HW problems, practice problems, and all problems covered in class. Replicating the solutions with given constants/parameters is a better method of studying than reviewing the answer.</p>
+    <p class="quote" style="margin-top:10px">The study guide's practice problem (portable solar panel and immersion heater) is worked out in ${'<button class="qlink" onclick="openProblem(19)">Q19</button>'}.</p></div>
+  <div class="guide-block"><div class="guide-head"><div class="guide-title">Recommended Equation Sheet</div><div class="guide-note">A starting point for your notes sheet</div></div>
+    <div class="eqsheet">
+      <div class="eq-group"><h4>Conversions</h4><ul>
+        <li>1 m = 3.28 ft</li><li>1 in = 2.54 cm</li><li>1 ft = 12 in</li><li>1 kg = 2.2 lbs</li>
+        <li>K - 273 = °C</li><li>°R - 459.7 = °F</li><li>1 cal = 4.18 J</li>
+      </ul></div>
+      <div class="eq-group"><h4>Constants</h4><ul>
+        <li>c = 1 cal/(g·°C) = 4.18 J/(g·°C) = 1 BTU/(lb·°F)</li>
+        <li>R = 8.314 J/(mol·K) = 0.0821 L·atm/(mol·K)</li>
+        <li>g = 9.8 m/s² = 9.8 N/kg = 32.2 ft/s²</li>
+      </ul></div>
+      <div class="eq-group"><h4>Mechanics &amp; Gases</h4><ul>
+        <li>ΣF = ma</li><li>P = F/A</li><li>PE = mgh</li><li>KE = ½mv²</li><li>PV = nRT</li>
+      </ul></div>
+      <div class="eq-group"><h4>Thermodynamics</h4><ul>
+        <li>Q = mcΔT</li><li>ΔU = Q + W</li><li>W = -pΔV</li><li>ΔH = ΔU + PΔV</li><li>ΔG = ΔH - TΔS</li>
+      </ul></div>
+      <div class="eq-group"><h4>Heat Engines &amp; Power</h4><ul>
+        <li>|Q<sub>H</sub>| = |Q<sub>c</sub>| + |W|</li><li>T<sub>c</sub>/T<sub>H</sub> = Q<sub>c</sub>/Q<sub>H</sub></li>
+        <li>η = W/Q<sub>H</sub> <small>(heat engines)</small></li><li>η = W/E<sub>in</sub> <small>(generalized definition)</small></li>
+        <li>P = E/t</li><li>P = IV</li><li>V = IR</li>
+      </ul></div>
+      <div class="eq-group"><h4>Unit Prefixes</h4><ul>
+        <li>Nano 10⁻⁹, Micro 10⁻⁶, Milli 10⁻³</li><li>Kilo 10³, Mega 10⁶, Giga 10⁹</li><li>Tera 10¹²</li>
+      </ul></div>
+      <div class="eq-group"><h4>Misc.</h4><p>One calorie is the energy required to raise the temperature of one gram of water by one degree Celsius.</p></div>
+    </div></div>`;
+}
+
+// ═══════════════════════════════════════
+// EXAM II: TOPICS (added to the shared registry)
+// ═══════════════════════════════════════
+Object.assign(TOPICS, {
+  "Mass Balances":                    { icon:"🔁", color:"var(--accent-lime)",    rgb:"163,230,53" },
+  "Kinetics":                         { icon:"⏱️", color:"var(--accent-purple)",  rgb:"167,139,250" },
+  "Pollution & Atmospheric Chemistry":{ icon:"🏭", color:"var(--accent-brown)",   rgb:"214,163,106" },
+  "Climate & Radiation Balance":      { icon:"🌍", color:"var(--accent-sky)",     rgb:"56,189,248" },
+  "Solar Energy":                     { icon:"☀️", color:"var(--accent)",         rgb:"245,165,36" },
+  "Wind Energy":                      { icon:"🌬️", color:"var(--accent-blue)",    rgb:"96,165,250" },
+  "Hydroelectric Energy":             { icon:"💧", color:"var(--accent-fuchsia)", rgb:"232,121,249" }
+});
+
+// ═══════════════════════════════════════
+// EXAM II: PRACTICE PROBLEMS (19 total)
+// ═══════════════════════════════════════
+const PROBLEMS_2 = [
+  {
+    id:1, topic:"Units & Conversions", difficulty:"Easy",
+    question:"Q1. Part A: Which of the following are units of power? Select all that apply.\n\n(1) atm·L/min\n(2) kJ\n(3) kg·m/s²\n(4) A²·Ω\n(5) BTU/hr\n(6) Pa·m³\n(7) hp\n(8) cal/g\n\nPart B: Is each expression a unit of energy, power, force, or pressure?\n\n(i) GW·s/mi\n(ii) N/cm²\n(iii) kPa·m³/hr\n(iv) V·mAh",
+    hint:"Reduce each one to SI units. Energy: J = N·m = kg·m²/s². Power: W = J/s = kg·m²/s³. Force: N = kg·m/s². Pressure: Pa = N/m² = J/m³. Energy divided by a length is a force, and energy divided by a volume is a pressure.",
+    solution:`Part A
+(1) atm·L/min = (pressure × volume)/time = energy/time   ✔ POWER
+(2) kJ                                                    ✘ energy
+(3) kg·m/s² = N                                           ✘ force
+(4) A²·Ω = I²R = I × (IR) = IV                            ✔ POWER
+(5) BTU/hr = energy/time                                  ✔ POWER
+(6) Pa·m³ = N·m = J                                       ✘ energy
+(7) hp (horsepower)                                       ✔ POWER
+(8) cal/g = energy per mass                               ✘
+
+Answer: (1), (4), (5), (7)
+
+Part B
+(i)   GW·s/mi = (power × time)/length = energy/length = J/m = N   → FORCE
+(ii)  N/cm² = force/area                                          → PRESSURE
+(iii) kPa·m³/hr = (pressure × volume)/time = energy/time          → POWER
+(iv)  V·mAh = (J/C)(C) = J                                        → ENERGY`
+  },
+  {
+    id:2, topic:"Mass Balances", difficulty:"Medium",
+    question:"Q2. Estimated carbon flows to and from the atmosphere, in gigatonnes of carbon per year (GtC/yr), are:\n\nFossil fuel combustion: +9.5\nLand-use change: +1.2\nVolcanoes: +0.1\nRespiration by organisms: +120\nPhotosynthesis: −120\nOcean uptake: −2.9\nCO₂ fertilization of plants: −3.1\n\n(a) Write the mass balance for carbon in the atmosphere. Is the atmosphere at steady state?\n(b) Calculate the rate of accumulation of CO₂ (not carbon) in kg/year.\n(c) The whole atmosphere contains about 1.8×10²⁰ mol of gas. Convert your answer to a rate of change in CO₂ concentration in ppm per year.",
+    hint:"Input − Output + Generation = Accumulation. Treat sources as inputs and sinks as outputs. Convert carbon to CO₂ with the molar masses (44 g CO₂ per 12 g C), and remember 1 Gt = 10⁹ tonnes = 10¹² kg.",
+    solution:`(a) Input − Output + Generation = Accumulation
+    Accumulation = Σ sources − Σ sinks
+                 = (9.5 + 1.2 + 0.1 + 120) − (120 + 2.9 + 3.1)
+                 = 4.8 GtC/yr
+    Accumulation ≠ 0, so the atmosphere is NOT at steady state
+    (unsteady: carbon keeps building up). Respiration and
+    photosynthesis cancel each other.
+
+(b) 4.8 GtC/yr × (44 g CO₂ / 12 g C) = 17.6 Gt CO₂/yr
+    17.6 × 10⁹ t × 1000 kg/t = [[1.76×10¹³ kg CO₂/yr]]
+
+(c) mol CO₂/yr = 1.76×10¹⁶ g / 44 g/mol = 4.0×10¹⁴ mol/yr
+    ppm/yr = (4.0×10¹⁴ / 1.8×10²⁰) × 10⁶ = [[2.2 ppm/yr]]
+    This is close to the measured rise of about 2 to 2.5 ppm per year.`
+  },
+  {
+    id:3, topic:"Mass Balances", difficulty:"Medium",
+    question:"Q3. A steady-state combustion reactor is fed 100 mol/min of CH₄ and 250 mol/min of O₂. 90% of the CH₄ burns completely: CH₄ + 2O₂ → CO₂ + 2H₂O.\n\n(a) Write the mole balance (In − Out + Generation = Accumulation) for CH₄ and simplify it for steady state.\n(b) Find the outlet molar flow rates of CH₄, O₂, CO₂ and H₂O.\n(c) What is the generation term for each species? Which are positive and which are negative?\n(d) The reactor volume is 50 L. What is the rate of CH₄ consumption per unit volume, r_{CH₄}?",
+    hint:"In − Out + Generation = Accumulation, and Accumulation = 0 at steady state. Every mole of CH₄ that reacts uses 2 mol O₂ and makes 1 mol CO₂ and 2 mol H₂O. Rate per volume = generation ÷ reactor volume.",
+    solution:`(a) In − Out + Generation = Accumulation
+    Steady state: Accumulation = 0
+    → Out = In + Generation   (for CH₄: Out = 100 + Generation)
+
+(b) CH₄ reacted = 0.90 × 100 = 90 mol/min
+    F_{CH₄} = 100 − 90      = 10 mol/min
+    F_{O₂}  = 250 − 2(90)   = 70 mol/min
+    F_{CO₂} = 0 + 90        = 90 mol/min
+    F_{H₂O} = 0 + 2(90)     = 180 mol/min
+
+(c) CH₄: −90 mol/min,  O₂: −180 mol/min    (consumed: negative)
+    CO₂: +90 mol/min,  H₂O: +180 mol/min   (produced: positive)
+
+(d) r_{CH₄} = generation/volume = (−90 mol/min)/(50 L) = [[−1.8 mol/(L·min)]]
+    A faster rate (larger |r|) means a smaller, cheaper reactor
+    for the same conversion.`
+  },
+  {
+    id:4, topic:"Kinetics", difficulty:"Medium",
+    question:"Q4. The rate constant for a reaction is k = 0.020 s⁻¹ at 300 K and k = 0.080 s⁻¹ at 330 K.\n\n(a) Use the Arrhenius equation, k = A·exp(−E_{a}/RT), to find the activation energy E_{a} in kJ/mol.\n(b) If you plotted ln(k) vs. 1/T, what would the slope be?\n(c) A catalyst lowers E_{a} by 10 kJ/mol without changing A. By what factor does k increase at 300 K?\n(d) Does the catalyst change ΔH or ΔG of the reaction? Explain.",
+    hint:"Divide the two Arrhenius expressions so A cancels: ln(k₂/k₁) = (E_{a}/R)(1/T₁ − 1/T₂). For (c), the ratio of rate constants is exp(ΔE_{a}/RT).",
+    solution:`(a) ln(k₂/k₁) = (E_{a}/R)(1/T₁ − 1/T₂)
+    ln(0.080/0.020) = ln 4 = 1.386
+    1/300 − 1/330 = 3.03×10⁻⁴ K⁻¹
+    E_{a} = (8.314)(1.386) / (3.03×10⁻⁴) = 38,000 J/mol = [[38 kJ/mol]]
+
+(b) ln k = ln A − (E_{a}/R)(1/T)   →   y = b + mx
+    slope = −E_{a}/R = −38,000/8.314 ≈ −4,570 K
+
+(c) k_{cat}/k = exp(ΔE_{a}/RT) = exp[10,000/(8.314 × 300)] = exp(4.01) ≈ [[55×]]
+
+(d) No. ΔH and ΔG depend only on the reactants and products
+    (thermodynamics). The catalyst lowers the activation barrier
+    (kinetics), so the same reaction simply happens faster.`
+  },
+  {
+    id:5, topic:"Kinetics", difficulty:"Medium",
+    question:"Q5. After a wildfire, a pollutant in a valley decays by a first-order reaction, r = −kC, with k = 0.15 hr⁻¹.\n\n(a) The solution is C = C₀·exp(−kt). How long does it take for the concentration to fall from 80 ppb to 10 ppb?\n(b) What fraction of the pollutant remains after 24 hours?\n(c) What are the units of k?",
+    hint:"Take the natural log of both sides: ln(C/C₀) = −kt, then solve for t. For units, the exponent kt must have no units.",
+    solution:`(a) ln(C/C₀) = −kt  →  t = ln(C₀/C)/k
+    t = ln(80/10)/0.15 = 2.079/0.15 = [[13.9 hr]]
+
+(b) C/C₀ = exp(−0.15 × 24) = exp(−3.6) = [[0.027 (2.7%)]]
+
+(c) kt has no units, so k is in [[1/time]] (here hr⁻¹).
+    Check with the rate law: r [mol/(L·hr)] = k × C [mol/L]  →  k in hr⁻¹`
+  },
+  {
+    id:6, topic:"Pollution & Atmospheric Chemistry", difficulty:"Medium",
+    question:"Q6. A coal power plant burns 5,000 tonnes of coal per day. The coal contains 2.0% sulfur by mass. Atomic masses: S = 32, O = 16, H = 1 g/mol.\n\n(a) Write the balanced reactions that turn sulfur into sulfuric acid (acid rain).\n(b) How many tonnes of SO₂ form each day?\n(c) Scrubbers capture 95% of the SO₂. If all of the remaining SO₂ ends up as H₂SO₄, how many tonnes of sulfuric acid are produced per day?\n(d) High-temperature combustion also forms NOₓ, even though coal contains little nitrogen. Where does the nitrogen come from? Write the reactions that form NO and NO₂.",
+    hint:"Follow the sulfur atoms: 1 mol S → 1 mol SO₂ → 1 mol SO₃ → 1 mol H₂SO₄. Convert tonnes of S into the mass of each product with the molar masses.",
+    solution:`(a) S + O₂ → SO₂
+    SO₂ + ½O₂ → SO₃
+    SO₃ + H₂O → H₂SO₄   (sulfuric acid: acid rain)
+
+(b) Sulfur = 0.020 × 5,000 t = 100 t S/day
+    100 t S × (64 g SO₂ / 32 g S) = [[200 t SO₂/day]]
+
+(c) Emitted = 0.05 × 200 = 10 t SO₂/day
+    10 t SO₂ × (98 g H₂SO₄ / 64 g SO₂) = [[15.3 t H₂SO₄/day]]
+
+(d) From the air, which is 79% N₂. At flame temperatures:
+    N₂ + O₂ → 2NO          (nitric oxide)
+    NO + O₃ → NO₂ + O₂     (nitrogen dioxide: brown gas, smog, acid rain)`
+  },
+  {
+    id:7, topic:"Climate & Radiation Balance", difficulty:"Medium",
+    question:"Q7. Treat Earth as a black body with no atmosphere. The solar irradiance at Earth is S = 1367 W/m² and the albedo is a = 0.30.\n\n(a) Write the energy balance on Earth (input = output) and solve for the surface temperature in K and °C.\n(b) Why is the absorbing area πR² while the emitting area is 4πR²?\n(c) If melting ice lowered Earth's albedo to 0.28, how much would the temperature change?\n(d) Earth's actual average surface temperature is about 288 K. What explains the difference?",
+    hint:"P_{in} = (1 − a)·S·πR² and P_{out} = σT⁴·4πR². Set them equal; R cancels. σ = 5.67×10⁻⁸ W/(m²·K⁴).",
+    solution:`(a) Input − Output = 0 (steady state, no generation)
+    (1 − a)·S·πR² = σT⁴·4πR²
+    T = [(1 − a)S/(4σ)]^(1/4)
+      = [(0.70)(1367) / (4 × 5.67×10⁻⁸)]^(1/4)
+      = (4.22×10⁹)^(1/4) = [[255 K (−18 °C)]]
+
+(b) Sunlight arrives as a parallel beam, so Earth intercepts it over
+    its 2D shadow, a disk of area πR². Earth emits IR from its whole
+    surface, a sphere of area 4πR².
+
+(c) a = 0.28: T = [(0.72)(1367)/(4σ)]^(1/4) = 256.7 K → about [[+1.8 K]]
+    A darker planet absorbs more sunlight. Melting ice exposes darker
+    ground and ocean, which is a positive (amplifying) feedback.
+
+(d) The greenhouse effect. Greenhouse gases (H₂O, CO₂, CH₄) let
+    UV/visible sunlight through but absorb the IR emitted by the
+    surface and send part of it back down, warming the surface by
+    about 33 K.`
+  },
+  {
+    id:8, topic:"Climate & Radiation Balance", difficulty:"Easy",
+    question:"Q8. Estimate the total power output of the sun in watts based on the amount of solar radiation reaching the Earth (1370 W/m²), the radius of the Earth (6.37×10⁶ m), and the distance to the sun (149.5×10⁹ m).\n\n(Practice problem from the Exam II Study Guide.)",
+    hint:"The sun's output spreads evenly over a sphere whose radius is the Earth-sun distance. Do you need Earth's radius?",
+    solution:`P_{sun} = S × (surface area of a sphere of radius d)
+      = (1370 W/m²) × 4π(149.5×10⁹ m)²
+      = (1370 W/m²) × (2.81×10²³ m²)
+      = [[3.85×10²⁶ W]]
+
+Earth's radius is not needed: S is already a power per area at
+Earth's distance. It would matter only for the power Earth
+intercepts, S·πR_{E}².`
+  },
+  {
+    id:9, topic:"Climate & Radiation Balance", difficulty:"Medium",
+    question:"Q9. Mars has very little atmosphere, and a simple radiation balance defines its temperature. Using the answer from Q8, estimate the average surface temperature of Mars. The radius of Mars is 3385 km, and it directly reflects 29% of the light that strikes it, and it lies a distance of 228×10⁶ km from the sun.\n\n(Practice problem from the Exam II Study Guide.)",
+    hint:"First find the irradiance at Mars, S = P_{sun}/(4πd²), with d in meters. Then use T = [(1 − a)S/(4σ)]^(1/4). The radius of Mars cancels.",
+    solution:`Irradiance at Mars (228×10⁶ km = 228×10⁹ m):
+S_{Mars} = 3.85×10²⁶ W / [4π(228×10⁹ m)²]
+       = 3.85×10²⁶ / 6.53×10²³ = 589 W/m²
+
+T = [(1 − 0.29)(589) / (4 × 5.67×10⁻⁸)]^(1/4)
+  = (418 / 2.27×10⁻⁷)^(1/4) = (1.84×10⁹)^(1/4)
+  = [[207 K (−66 °C)]]
+
+Mars' radius cancels (πR² in, 4πR² out), so it is extra
+information.`
+  },
+  {
+    id:10, topic:"Climate & Radiation Balance", difficulty:"Hard",
+    question:"Q10. A simple greenhouse model: the atmosphere is a thin layer that is transparent to sunlight but absorbs a fraction ε = 0.80 of the infrared (IR) radiation emitted by the surface. The surface is a black body. After reflection, the sunlight absorbed by the surface averages E = 240 W/m². Let x be the IR intensity emitted by the surface and y the intensity emitted by the atmosphere (y goes both up and down).\n\n(a) Write steady-state energy balances for the atmosphere and for the surface, and solve for x and y.\n(b) Find the surface and atmosphere temperatures. Hint: T = (q/εσ)^(1/4), with ε = 1 for the surface.\n(c) What would the surface temperature be with no atmosphere?\n(d) If added CO₂ raised the IR absorptivity to ε = 0.85, how much would the surface warm?",
+    hint:"Atmosphere: it absorbs εx and emits y upward plus y downward, so εx = 2y. Surface: it absorbs E + y and emits x, so E + y = x. Substitute y = εx/2 into the surface balance.",
+    solution:`(a) Atmosphere (in = out):  εx = 2y  →  y = εx/2
+    Surface (in = out):     E + y = x
+    E + εx/2 = x  →  x = E/(1 − ε/2) = 240/(1 − 0.40) = [[400 W/m²]]
+    y = (0.80)(400)/2 = [[160 W/m²]]
+
+(b) T_{surface} = (x/σ)^(1/4) = (400 / 5.67×10⁻⁸)^(1/4) = [[290 K]]
+    T_{atm} = [y/(εσ)]^(1/4) = [160 / (0.80 × 5.67×10⁻⁸)]^(1/4) = [[244 K]]
+
+(c) No atmosphere: x = E
+    T = (240 / 5.67×10⁻⁸)^(1/4) = 255 K
+    The atmosphere warms the surface by about 35 K.
+
+(d) ε = 0.85:  x = 240/(1 − 0.425) = 417 W/m²
+    T_{surface} = (417/σ)^(1/4) = 293 K  →  about [[+3 K]]
+    More IR absorption sends more IR back to the surface: the
+    enhanced greenhouse effect.`
+  },
+  {
+    id:11, topic:"Solar Energy", difficulty:"Medium",
+    question:"Q11. A flat-plate solar collector of area 2 m² has water flowing in at a rate of 0.2 L/min at a temperature of 15 °C and an outflow of 49 °C, while the incident radiation is constant at 725 W/m². Calculate the approximate thermal efficiency.\n\n(Practice problem from the Exam II Study Guide.)",
+    hint:"Useful power = ṁ·c·ΔT, with ṁ in kg/s (1 L of water ≈ 1 kg). Input power = S × A. η = useful / input.",
+    solution:`ṁ = 0.2 L/min × 1 kg/L × (1 min / 60 s) = 3.33×10⁻³ kg/s
+
+P_{water} = ṁcΔT = (3.33×10⁻³ kg/s)(4180 J/kg°C)(49 − 15 °C) = 474 W
+P_{sun}   = S·A  = (725 W/m²)(2 m²) = 1,450 W
+
+η = 474 / 1,450 = [[0.33 (33%)]]
+
+The rest is lost by reflection from the cover and by IR emission and
+convection from the hot plate. A selective absorber (high
+absorptivity for sunlight, low emissivity in the IR) raises η.`
+  },
+  {
+    id:12, topic:"Solar Energy", difficulty:"Medium",
+    question:"Q12. An active solar water heater has collector area A and is exposed to irradiance S. Water (density ρ, heat capacity c) is pumped through it at volumetric flow rate ø, and the collector efficiency is η.\n\n(a) Derive an expression for the temperature rise of the water, ΔT, using only symbols. Check the units.\n(b) Evaluate ΔT for A = 4.0 m², S = 800 W/m², η = 0.45 and ø = 0.050 L/s.\n(c) What flow rate (in L/min) would give a 20 °C temperature rise?",
+    hint:"Steady-state energy balance on the water: useful power absorbed = power carried away by the water. ηSA = ṁcΔT, with ṁ = ρø.",
+    solution:`(a) ηSA = ṁcΔT = ρøcΔT  →  [[ΔT = ηSA/(ρøc)]]
+    Units: (W/m²)(m²) / [(kg/m³)(m³/s)(J/kg·°C)] = W / (W/°C) = °C ✔
+
+(b) ρø = (1 kg/L)(0.050 L/s) = 0.050 kg/s
+    ΔT = (0.45)(800)(4.0) / [(0.050)(4180)] = 1,440 W / 209 W/°C = [[6.9 °C]]
+
+(c) ρø = ηSA/(cΔT) = 1,440 / (4180 × 20) = 0.0172 kg/s
+    0.0172 L/s × 60 s/min = [[1.0 L/min]]
+    Slower flow gives a bigger ΔT, but the collector runs hotter and
+    loses more heat, so in practice η drops.`
+  },
+  {
+    id:13, topic:"Solar Energy", difficulty:"Hard",
+    question:"Q13. A solar power plant receives an effective radiation of 1020 W/m² at its heliostat collectors (before concentration). However, only a fraction of this energy can be harnessed as electricity where the light is concentrated. First, the conversion efficiency of the concentration process is 51%, i.e. 51% of radiation striking the heliostat collectors is converted to thermal energy at the concentrator (this accounts for heat losses, reflective losses etc.). Secondly, the plant runs a heat engine with Carnot losses. Assume the plant fluid operates at 650 °C, and the sink temperature is 100 °C. Calculate the minimum area of heliostats required to generate 150 MW of power.\n\n(Practice problem from the Exam II Study Guide.)",
+    hint:"Efficiencies in series multiply: η_{overall} = η_{conc} × η_{Carnot}. Use absolute temperatures in η_{C} = 1 − T_{C}/T_{H}. Then A = P/(η_{overall}·S).",
+    solution:`η_{C} = 1 − T_{C}/T_{H} = 1 − (100 + 273)/(650 + 273) = 1 − 373/923 = 0.596
+
+η_{overall} = η_{conc} × η_{C} = 0.51 × 0.596 = 0.304
+
+P = η_{overall}·S·A  →  A = P/(η_{overall}·S)
+A = 150×10⁶ W / (0.304 × 1020 W/m²) = [[4.8×10⁵ m² (≈ 0.48 km²)]]
+
+This is a minimum because no heat engine can beat the Carnot
+efficiency; a real turbine needs more area.`
+  },
+  {
+    id:14, topic:"Exponential Growth", difficulty:"Medium",
+    question:"Q14. In 2010, the global solar photovoltaic capacity was 20 GW. By 2020, this figure reached 770 GW. Assuming exponential growth, what year will this number reach 5 TW? Assuming linear growth, what year will this number reach 5 TW?\n\n(Practice problem from the Exam II Study Guide.)",
+    hint:"Exponential: N(t) = N₀·exp(at); find a from the two data points with t = 0 in 2010. Linear: y = mx + b, with slope m = ΔN/Δt. Remember 5 TW = 5,000 GW.",
+    solution:`Exponential (t = 0 in 2010, N₀ = 20 GW):
+  770 = 20·exp(10a)  →  a = ln(38.5)/10 = 3.651/10 = 0.365 yr⁻¹
+  5,000 = 20·exp(0.365t)  →  t = ln(250)/0.365 = 5.521/0.365 = 15.1 yr
+  → [[early 2025]]
+
+Linear:
+  m = (770 − 20)/(2020 − 2010) = 75 GW/yr
+  5,000 = 20 + 75t  →  t = 66.4 yr  →  [[about 2076]]
+
+The two models differ by about 50 years, so always state which
+growth model you assumed.`
+  },
+  {
+    id:15, topic:"Wind Energy", difficulty:"Medium",
+    question:"Q15. A wind turbine has a rotor diameter of 100 m and an efficiency of 40%. Use ρ_{air} = 1.204 kg/m³.\n\n(a) What is its electrical output at a wind speed of 10 m/s?\n(b) Site A has a steady 8 m/s wind for 24 h. Site B has 11 m/s for 12 h and 5 m/s for the other 12 h, so both average 8 m/s. Which site produces more energy per day, and by how much?\n(c) Why does doubling the wind speed increase the power 8 times?\n(d) The turbine's cut-in speed is 3.5 m/s, its rated speed is 12 m/s, and its cut-out speed is 25 m/s. What does the turbine do at 2 m/s, at 18 m/s, and at 30 m/s?",
+    hint:"P_{e} = ½ρAv³η with A = πd²/4. For the same turbine, energy ∝ v³·t, so compare v³t for each site; ρ, A and η cancel.",
+    solution:`(a) A = π(100 m)²/4 = 7,854 m²
+    P_{e} = ½(1.204)(7,854)(10)³(0.40) = [[1.89 MW]]
+
+(b) E ∝ v³t
+    Site A: 8³ × 24 = 12,288
+    Site B: 11³ × 12 + 5³ × 12 = 15,972 + 1,500 = 17,472
+    17,472 / 12,288 = [[1.42: Site B makes 42% more]], even though the
+    average speed is the same (about 33 vs. 23 MWh per day).
+
+(c) P = KE/t = ½ṁv², with ṁ = ρAv. Doubling v gives 4× the energy
+    per kg of air (v²) and 2× as much air per second (v): 4 × 2 = 8.
+
+(d) 2 m/s:  below cut-in, the blades do not turn, P = 0
+    18 m/s: above the rated speed, output is held at the rated power
+            (the blades pitch to spill the extra wind)
+    30 m/s: above cut-out, the turbine shuts down to prevent damage, P = 0`
+  },
+  {
+    id:16, topic:"Wind Energy", difficulty:"Hard",
+    question:"Q16. A town compares two renewable facilities over one day.\n\nWind: 12 turbines, each 110 m in diameter and 38% efficient. The wind blows at 28 mph for 10 hours per day and is calm the rest of the day.\nSolar: photovoltaics covering 0.50 km² at 18% efficiency, with a daily insolation of 22 MJ/m².\n\n(a) Which facility produces more electrical energy per day (in MWh)?\n(b) At $0.12/kWh, what is the daily value of the electricity from each?\n(c) Give one advantage and one disadvantage of wind compared with solar.",
+    hint:"Convert 28 mph to m/s (1 mi = 5280 ft, 1 m = 3.28 ft). Wind: E = P_{e} × (number of turbines) × (hours of wind). Solar: E = insolation × area × η, with 1 km² = 10⁶ m². 1 kWh = 3.6 MJ.",
+    solution:`(a) v = 28 mi/hr × 5280 ft/mi × (1 m/3.28 ft) × (1 hr/3600 s) = 12.5 m/s
+    A = π(55 m)² = 9,503 m²
+    P_{e} (each) = ½(1.204)(9,503)(12.5)³(0.38) = 4.27 MW
+    E_{wind} = 4.27 MW × 12 turbines × 10 h = [[512 MWh/day]]
+
+    E_{solar} = (22×10⁶ J/m²)(0.50×10⁶ m²)(0.18) = 1.98×10¹² J
+            = 1.98×10¹² J / (3.6×10⁹ J/MWh) = [[550 MWh/day]]
+    Solar produces about 7% more.
+
+(b) Wind:  512,000 kWh × $0.12 = [[$61,400 per day]]
+    Solar: 550,000 kWh × $0.12 = [[$66,000 per day]]
+
+(c) Wind advantage: it can generate at night and in winter, and the
+    land between turbines can still be farmed.
+    Wind disadvantage: output swings with v³ and stops when the wind
+    is calm; turbines also bring noise and bird impacts.`
+  },
+  {
+    id:17, topic:"Hydroelectric Energy", difficulty:"Hard",
+    question:"Q17. A high-head dam produces P_{e} = 20 MW. The water falls 120 m, the reservoir surface area is 50 km², and the efficiency is 90%.\n\n(a) What volumetric flow rate (m³/s) must pass through the turbines?\n(b) A river feeds the reservoir at 17 m³/s. How many inches of rain per year must fall directly on the reservoir to keep its level constant?\n(c) A run-of-river plant on a river flowing at 3.0 m/s, also 90% efficient, must deliver the same 20 MW. What flow rate and turbine cross-sectional area are needed? What does this say about low-head hydro?",
+    hint:"Dam: P_{e} = ρøghη. Rain must make up the difference between the outflow and the river inflow: (deficit in m³/yr) ÷ (area in m²) gives m/yr. Run-of-river: P_{e} = ½ρøv²η and ø = Av.",
+    solution:`(a) ø = P_{e}/(ρghη) = 20×10⁶ / (1000 × 9.8 × 120 × 0.90) = [[18.9 m³/s]]
+
+(b) Mass balance on the reservoir (steady level: In = Out)
+    Deficit = 18.9 − 17.0 = 1.9 m³/s
+    Per year: 1.9 m³/s × 3.15×10⁷ s/yr = 5.98×10⁷ m³/yr
+    Depth = 5.98×10⁷ m³ / (50×10⁶ m²) = 1.20 m/yr
+    1.20 m × 3.28 ft/m × 12 in/ft = [[47 in/yr]]
+
+(c) ø = 2P_{e}/(ρv²η) = 2(20×10⁶) / (1000 × 3.0² × 0.90) = [[4,940 m³/s]]
+    A = ø/v = 4,940/3.0 = [[1,650 m²]]
+    Run-of-river uses kinetic energy (½v² ≈ 4.5 J/kg) instead of
+    potential energy (gh ≈ 1,180 J/kg), so it needs about 260× more
+    water flow for the same power.`
+  },
+  {
+    id:18, topic:"Hydroelectric Energy", difficulty:"Hard",
+    question:"Q18. A high-head power generating station has an area of 2.5 mi² and is filled to a level of 300 m. The efficiency of the facility is 85%. The dam is operated during the dry season with an outflow of 15,000 L/s of water. How many days will it take for the power output of the facility to drop below 30 MWe?\n\n(Practice problem from the Exam II Study Guide.)",
+    hint:"At a fixed outflow, P_{e} = ρøghη drops as the water level h drops. Find h when P_{e} = 30 MW; the volume drained is area × Δh; time = volume ÷ outflow. Assume no inflow during the dry season.",
+    solution:`Initial: P_{e} = (1000)(15 m³/s)(9.8)(300)(0.85) = 37.5 MW
+
+Level at 30 MW: h = P_{e}/(ρøgη) = 30×10⁶ / [(1000)(15)(9.8)(0.85)] = 240 m
+Δh = 300 − 240 = 60 m
+
+Area: 2.5 mi² × (5280 ft/mi ÷ 3.28 ft/m)² = 2.5 × (1,610 m)² = 6.48×10⁶ m²
+Volume drained = (6.48×10⁶ m²)(60 m) = 3.88×10⁸ m³
+
+t = 3.88×10⁸ m³ / (15 m³/s) = 2.59×10⁷ s = [[≈ 299 days]]
+
+Assumes vertical reservoir walls (constant area) and no inflow
+or rain.`
+  },
+  {
+    id:19, topic:"Hydroelectric Energy", difficulty:"Medium",
+    question:"Q19. A dam produces 25 MW of electricity from water that falls 80 m, at 88% efficiency. The water reaches the turbine through a penstock (pipe) 2.0 m in diameter.\n\n(a) What mass flow rate of water (kg/s) is needed? Hint: P_{e} = ṁghη.\n(b) How fast does the water travel in the penstock?\n(c) Give two advantages and two disadvantages of hydroelectric power.",
+    hint:"ṁ = P_{e}/(ghη). Convert to volumetric flow with ø = ṁ/ρ (ρ = 1000 kg/m³), then v = ø/A with A = πd²/4.",
+    solution:`(a) ṁ = 25×10⁶ W / (9.8 × 80 × 0.88) = [[3.6×10⁴ kg/s]]
+
+(b) ø = ṁ/ρ = 36,200 / 1000 = 36.2 m³/s
+    A = π(2.0)²/4 = 3.14 m²
+    v = ø/A = 36.2 / 3.14 = [[11.5 m/s]]
+
+(c) Advantages: no fuel and no direct emissions; dispatchable
+    (ramps up and down quickly); long lifetime; the reservoir
+    stores energy and provides flood control and water supply.
+    Disadvantages: floods land and displaces people and ecosystems;
+    blocks fish migration; depends on rainfall (droughts); high
+    construction cost and CO₂ from the concrete; few suitable sites.`
+  }
+];
+
+// ═══════════════════════════════════════
+// EXAM II: FLASH CARDS
+// ═══════════════════════════════════════
+const DECKS_2 = {
+  U: { name:"Units & Constants", color:"var(--accent-teal)" },
+  E: { name:"Equations",         color:"var(--accent)" },
+  C: { name:"Concepts",          color:"var(--accent-blue)" }
+};
+const CARDS_2 = [
+  // Units & constants
+  ["U","Density of water","ρ = 1000 kg/m³ = 1 kg/L","So 1 m³/s of water = 1000 kg/s.",true],
+  ["U","Units that count as power","W = J/s = kg·m²/s³; also hp, BTU/hr, (pressure × volume)/time, I²R","Anything that is energy per time.",false],
+  ["U","Energy ÷ length is a unit of…","Force: J/m = N","e.g., GW·s/mi",false],
+  ["U","Energy ÷ volume is a unit of…","Pressure: J/m³ = N/m² = Pa","e.g., kWh/m³",false],
+  ["U","Units of k for a first-order reaction","1/time (s⁻¹, hr⁻¹)","From r = −kC.",false],
+  ["U","ppm on a mole basis","mol of species per 10⁶ mol of gas","420 ppm → x = 0.00042",false],
+  ["U","1 km² in m²","10⁶ m²","(1000 m)²",true],
+  ["U","1 mi² in m²","≈ 2.59×10⁶ m²","(5280 ft ÷ 3.28 ft/m)² = (1,610 m)²",true],
+  ["U","1 m in inches","39.4 in","1 m = 3.28 ft × 12 in/ft. Useful for rainfall.",true],
+  ["U","1 gigatonne (Gt)","10⁹ tonnes = 10¹² kg","",true],
+  ["U","Mass of carbon → mass of CO₂","× 44/12 (≈ 3.67)","Each C picks up two O atoms.",true],
+
+  // Equations
+  ["E","General mass (or energy) balance","Input − Output + Generation = Accumulation","Steady state: Accumulation = 0.",true],
+  ["E","First-order rate law","r = −kC","Rate is proportional to concentration.",true],
+  ["E","First-order decay over time","C = C₀·exp(−kt)","ln(C/C₀) = −kt",true],
+  ["E","Arrhenius equation","k = A·exp(−E_{a}/RT)","ln k = ln A − (E_{a}/R)(1/T): plot ln k vs. 1/T, slope = −E_{a}/R.",true],
+  ["E","Stefan-Boltzmann law","P = εσAT⁴","Black body: ε = 1. Per area: T = (q/εσ)^(1/4).",true],
+  ["E","Irradiance at distance d from the sun","S = P_{sun}/(4πd²)","S falls as 1/d².",true],
+  ["E","Wind turbine power","P_{e} = ½ρAv³η","A = πd²/4 is the swept area. P ∝ v³.",true],
+  ["E","Wind power per unit area","P/A = ½ρv³","At 10 m/s, ≈ 600 W/m², comparable to sunlight.",true],
+  ["E","Hydroelectric dam (high head)","P_{e} = ρøghη = ṁghη","Uses potential energy.",true],
+  ["E","Run-of-river (low head)","P_{e} = ½ρøv²η","Uses kinetic energy; with ø = Av, it equals ½ρAv³η.",true],
+  ["E","Volumetric and mass flow","ø = A·v,   ṁ = ρ·ø","",true],
+  ["E","Solar collector with flowing water","η = ρøcΔT/(S·A)","Rearranged: ΔT = ηSA/(ρøc).",true],
+  ["E","Exponential growth","N(t) = N₀·exp(at)","a = ln(N₂/N₁)/(t₂ − t₁)",true],
+  ["E","Linear growth","y = mx + b","m = Δy/Δx",true],
+  ["E","Carnot efficiency (Exam I review)","η_{C} = 1 − T_{C}/T_{H}","Absolute temperatures. Sets the limit for solar thermal (CSP) plants.",true],
+  ["E","Efficiencies in series (Exam I review)","η_{overall} = η₁ × η₂ × η₃ × …","",true],
+
+  // Concepts
+  ["C","Thermodynamics vs. kinetics","Thermodynamics (ΔH, ΔG) says whether a reaction can happen and how much energy it releases; kinetics (k, E_{a}) says how fast.","ΔG is fixed by reactants and products; a catalyst cannot change it.",false],
+  ["C","What does a catalyst do?","Lowers the activation energy so the reaction runs faster (and can steer selectivity). It does not change ΔH or ΔG and is not consumed.","",false],
+  ["C","Effect of raising temperature on rate","k increases (Arrhenius), so the reaction runs faster.","",false],
+  ["C","Steady state","Nothing accumulates: dN/dt = 0, so In − Out + Generation = 0.","",false],
+  ["C","Types of pollution","Air (chemical), water, light, noise, heat (thermal), particulate matter (PM2.5)","",false],
+  ["C","Common air pollutants","CO₂, CH₄, CO, NOₓ, SOₓ, VOCs, CFCs, smog, particulates","",false],
+  ["C","Complete vs. incomplete combustion","Complete: CH₄ + 2O₂ → CO₂ + 2H₂O. Incomplete (too little O₂): CH₄ + 3/2 O₂ → CO + 2H₂O.","CO is toxic.",false],
+  ["C","How NOₓ forms","N₂ + O₂ → 2NO (high-temperature combustion; the N comes from air);  NO + O₃ → NO₂ + O₂","NO₂ is a brown gas that drives smog and acid rain.",false],
+  ["C","Acid rain from sulfur","S + O₂ → SO₂;  SO₂ + ½O₂ → SO₃;  SO₃ + H₂O → H₂SO₄","Scrubbers remove SO₂ from flue gas.",false],
+  ["C","The greenhouse effect","Sunlight (UV/visible) passes through the atmosphere and warms the surface; the surface emits IR; greenhouse gases absorb that IR and re-emit part of it downward, warming the surface.","",false],
+  ["C","Greenhouse gases","H₂O, CO₂, CH₄, N₂O, CFCs (not N₂ or O₂)","",false],
+  ["C","Albedo","The fraction of incoming sunlight a planet reflects (0 ≤ a ≤ 1).","",false],
+  ["C","Why πR² in but 4πR² out?","Sunlight is intercepted by Earth's disk (πR²); IR is emitted from its whole surface (4πR²).","",false],
+  ["C","Carbon cycle sources and sinks","Sources: fossil fuels, land-use change, respiration, volcanoes. Sinks: photosynthesis, ocean uptake, weathering.","",false],
+  ["C","Good solar collector design","High absorptivity for sunlight and low emissivity in the IR (a selective surface), plus glazing and insulation to cut losses.","",false],
+  ["C","Two ways to make electricity from sunlight","Concentrated solar power (heat engine, Carnot-limited) and photovoltaics (direct conversion).","",false],
+  ["C","Solar: advantages and disadvantages","Pros: free fuel, no emissions in operation, modular. Cons: intermittent (night, clouds, season), low power density, needs large areas and storage.","",false],
+  ["C","What drives wind?","Uneven solar heating creates pressure differences, and air flows from high to low pressure (e.g., sea and land breezes).","",false],
+  ["C","Doubling the wind speed","8× the power: 4× the energy per kg (v²) × 2× the air delivered per second (v).","",false],
+  ["C","Cut-in, rated, and cut-out speeds","Cut-in: minimum speed to turn. Rated: output reaches rated power and is capped above it. Cut-out: turbine shuts down to prevent damage.","",false],
+  ["C","Wind: advantages and disadvantages","Pros: no fuel or emissions, works day and night, land between turbines stays usable. Cons: intermittent, output swings with v³, noise, visual impact, birds.","",false],
+  ["C","High-head vs. low-head hydro","High head (dams) uses potential energy, P = ρøghη. Low head (run-of-river) uses kinetic energy, P = ½ρøv²η, and needs far more flow.","",false],
+  ["C","Hydro: advantages and disadvantages","Pros: dispatchable, long-lived, no fuel, storage and flood control. Cons: floods land and ecosystems, blocks fish, drought-dependent, few sites, CO₂ from concrete.","",false],
+  ["C","CO₂ from building a dam","Making cement: CaCO₃ → CaO + CO₂ at ~800 °C.","Compared with coal power, a large dam can pay back this CO₂ within months.",false],
+  ["C","Exponential vs. linear growth","Exponential: constant percentage growth (dN/dt = aN). Linear: constant amount added each year. Projections diverge quickly.","",false]
+].map((c, i) => ({ id:i, deck:c[0], front:c[1], back:c[2], note:c[3], monoBack:c[4] }));
+
+// ═══════════════════════════════════════
+// EXAM II: STUDY GUIDE (imported from the Exam II Study Guide)
+// ═══════════════════════════════════════
+const GUIDE_2 = [
+  { title:"Mathematics", items:[
+    { html:"<b>Dimensional analysis:</b> Understand the different units we have covered in class, know the simple unit conversions; more complex conversions will be given, if needed", q:[1], deck:"U" },
+    { html:"<b>Scientific notation</b>", q:[2,8] },
+    { html:"<b>Exponential Growth:</b> Understand the parameters in the equation <span class='eq'>N(t) = N₀exp(at)</span> and fitting this equation to an exponential graph, compare with linear growth, <span class='eq'>y = mx + b</span>", q:[14] }
+  ]},
+  { title:"Chemical Engineering Principles", items:[
+    { html:"<b>Basic Physics:</b> <span class='eq'>F = ma</span>, <span class='eq'>W = Fd</span>, <span class='eq'>KE = ½mv²</span>, <span class='eq'>PE = mgh</span>, <span class='eq'>PV = nRT</span>, <span class='eq'>P = F/A</span>, <span class='eq'>P = IV</span>, <span class='eq'>V = IR</span>", q:[15,17,19], ex1:true },
+    { html:"<b>Stoichiometry:</b> Balancing an equation, converting from mass of one reactant to mass of a product or vice versa", q:[3,6] },
+    { html:"<b>Mass and energy balances</b> (input − output + generation = accumulation)", q:[2,3,10] },
+    { html:"<b>Basic Thermodynamics:</b> 0th, 1st, 2nd and 3rd Laws", ex1:true, subs:[
+      { html:"<span class='eq'>ΔU = Q + W</span> (First Law)", ex1:true },
+      { html:"<span class='eq'>W = -PΔV</span> (pressure-volume work)", ex1:true },
+      { html:"<span class='eq'>ΔH = ΔU + PΔV</span> (Enthalpy)", ex1:true },
+      { html:"<span class='eq'>ΔG = ΔH - TΔS</span> (Gibbs Free Energy)", ex1:true },
+      { html:"<span class='eq'>Q = mcΔT</span>", q:[11,12] },
+      { html:"Latent heat of fusion, vaporization (concepts, not the values)", ex1:true },
+      { html:"Exothermic versus endothermic reactions", ex1:true },
+      { html:"Heat engines, Carnot efficiency, temperature conversions", q:[13] }
+    ]}
+  ]},
+  { title:"Energy Technologies", items:[
+    { html:"<b>Energy Types:</b> Be able to discuss the various forms of energy (potential, kinetic, thermal, electromagnetic, electrical, chemical, nuclear, etc.) and utilize the First Law of Thermodynamics to convert between each", ex1:true, subs:[
+      { html:"Difference between Power and Energy", q:[16] },
+      { html:"Sankey Diagrams", ex1:true },
+      { html:"Energy Density: Convert between gravimetric/volumetric/molar energy density, what is the significance of each?", ex1:true }
+    ]},
+    { html:"<b>Fossil Fuels:</b> Coal, natural gas, crude oil, tight crude", ex1:true, subs:[
+      { html:"Understand the basics and advantages/disadvantages of fossil fuels", q:[6] }
+    ]},
+    { html:"<b>Pollution:</b> Different types (thermal, chemical, particulate, etc.), associated hazards", q:[6], deck:"C", subs:[
+      { html:"Greenhouse gases, atmospheric chemistry (acid rain, NOx, SOx)", q:[6] },
+      { html:"Climate Change: Be able to explain the greenhouse effect in terms of UV/Vis, IR radiation", q:[7,10] }
+    ]},
+    { html:"<b>Solar Energy</b>", subs:[
+      { html:"Solar collector design, i.e. optimizing absorptivity/emissivity", q:[11,12] },
+      { html:"Solar electricity generation: heat engines and photovoltaics", q:[13] },
+      { html:"Advantages and disadvantages", deck:"C" },
+      { html:"Irradiance/power governing equations", q:[8,9,11] }
+    ]},
+    { html:"<b>Wind energy:</b> Understand the basic equations and advantages/disadvantages", q:[15,16] },
+    { html:"<b>Hydroelectric energy:</b> Understand the basic equations and advantages/disadvantages", q:[17,18,19] }
+  ]},
+  { title:"Also Covered in Lecture", note:"Lectures 10 to 14", added:true, items:[
+    { html:"<b>Reaction kinetics:</b> Rate laws and units of k, first-order decay, the Arrhenius equation, catalysts, and thermodynamics vs. kinetics", q:[4,5] },
+    { html:"<b>Planetary energy balance:</b> Albedo, the Stefan-Boltzmann law, and a simple greenhouse model", q:[7,9,10] },
+    { html:"<b>CO₂ payback of a hydroelectric dam</b> compared with coal power", deck:"C" }
+  ]}
+];
+
+function guideExtra2() {
+  return `<div class="guide-block"><div class="guide-head"><div class="guide-title">Review Course Materials</div></div>
+    <p class="quote">Be sure you know how to do all HW problems, practice problems, and all problems covered in class. Replicating the solutions with given constants/parameters is a better method of studying than reviewing the answer.</p>
+    <p class="quote" style="margin-top:10px">The six practice problems from the Exam II study guide are worked out in
+      <button class="qlink" onclick="openProblem(11)">Q11</button> <button class="qlink" onclick="openProblem(13)">Q13</button>
+      <button class="qlink" onclick="openProblem(8)">Q8</button> <button class="qlink" onclick="openProblem(9)">Q9</button>
+      <button class="qlink" onclick="openProblem(14)">Q14</button> <button class="qlink" onclick="openProblem(18)">Q18</button>
+      (study guide problems 1 to 6, in order).</p></div>
+  <div class="guide-block"><div class="guide-head"><div class="guide-title">Exam II Equation Sheet</div><div class="guide-note">A starting point for your notes sheet</div></div>
+    <div class="eqsheet">
+      <div class="eq-group"><h4>Conversions</h4><ul>
+        <li>1 m = 3.28 ft</li><li>1 mi = 5280 ft</li><li>1 cal = 4.18 J</li>
+      </ul></div>
+      <div class="eq-group"><h4>Constants</h4><ul>
+        <li>R = 8.314 J/(mol·K) = 0.0821 L·atm/(mol·K)</li>
+        <li>g = 9.8 m/s² = 9.8 N/kg = 32.2 ft/s²</li>
+        <li>σ = 5.67×10⁻⁸ W/(m²·K⁴)</li>
+        <li>ρ<sub>air</sub> = 1.204 kg/m³</li>
+      </ul></div>
+      <div class="eq-group"><h4>Thermodynamics</h4><ul>
+        <li>W = -pΔV</li><li>ΔH = ΔU + PΔV</li><li>ΔG = ΔH - TΔS</li>
+      </ul></div>
+      <div class="eq-group"><h4>Radiation &amp; Growth</h4><ul>
+        <li>S = 4σT⁴/(1 − a)</li><li>N(t) = N<sub>o</sub>exp(at)</li>
+      </ul></div>
+      <div class="eq-group"><h4>Wind &amp; Hydro</h4><ul>
+        <li>P<sub>e</sub> = ½Aρv³η</li><li>P<sub>e</sub> = ρøghη</li><li>P<sub>e</sub> = ½ρøv²η</li>
+      </ul></div>
+      <div class="eq-group"><h4>Unit Prefixes</h4><ul>
+        <li>Nano 10⁻⁹, Micro 10⁻⁶, Milli 10⁻³</li><li>Kilo 10³, Mega 10⁶, Giga 10⁹</li><li>Tera 10¹²</li>
+      </ul></div>
+    </div></div>`;
+}
+
+
+// ═══════════════════════════════════════
+// EXAM CONFIG
+// ═══════════════════════════════════════
+const EXAMS = {
+  '1': {
+    label: 'Exam I', problems: PROBLEMS_1, cards: CARDS_1, guide: GUIDE_1, decks: DECKS_1, extra: guideExtra1,
+    title: 'Get ready for Exam I',
+    welcome: `<p>This tool covers CHE 150 from Lecture 1 through Lecture 9: units and dimensional analysis, forms of energy, the ideal gas law, the four laws of thermodynamics, heat and phase changes, heat engines, energy density, fossil fuels, exponential growth, and the solar heater project. It is built from Prof. Porosoff's lectures, homework, and the Exam I study guide.</p>
+          <p><strong>Study Guide</strong> is the official topic list and recommended equation sheet, with a checklist and links to matching practice.<br>
+          <strong>Flash Cards</strong> drill the units, conversions, equations, and concepts you need to recall quickly.<br>
+          <strong>Practice Problems</strong> are 20 exam-style problems, each with a hint and a fully worked solution.</p>`,
+    strip: `<span><b>Exam I:</b> Tuesday, Oct. 6, 3:25-4:40 pm, Goergen 108</span>
+          <span><b>Covers:</b> Lectures 1 to 9</span>
+          <span><b>Bring:</b> a calculator and 1 sheet of handwritten notes (front and back)</span>`,
+    lead: 'The Exam I study guide, topic by topic.',
+    callout: `<b>Exam I:</b> Tuesday, Oct. 6, 3:25-4:40 pm, Goergen 108. You may bring <b>1 sheet of handwritten notes</b> (front and back). Building that sheet from this guide and the equation sheet below is good studying in itself.`
+  },
+  '2': {
+    label: 'Exam II', problems: PROBLEMS_2, cards: CARDS_2, guide: GUIDE_2, decks: DECKS_2, extra: guideExtra2,
+    title: 'Get ready for Exam II',
+    welcome: `<p>This tool covers the Exam II material: mass balances and reaction kinetics, pollution and atmospheric chemistry, greenhouse gases and the planetary energy balance, solar energy, wind, and hydroelectric power. Many problems build on Exam I fundamentals (units, Q = mcΔT, efficiency, Carnot, stoichiometry), which you can review in the Exam I tab. It is built from Prof. Porosoff's lectures, homework, and the Exam II study guide.</p>
+          <p><strong>Study Guide</strong> is the official topic list and equation sheet, with a checklist and links to matching practice.<br>
+          <strong>Flash Cards</strong> drill the constants, equations, and concepts you need to recall quickly.<br>
+          <strong>Practice Problems</strong> are 19 exam-style problems, including all six study guide practice problems, each with a hint and a fully worked solution.</p>`,
+    strip: `<span><b>Exam II:</b> Tuesday, Nov. 10, 3:25-4:40 pm, Goergen 108</span>
+          <span><b>Covers:</b> Lectures 10 to 14, plus solar energy</span>
+          <span><b>Bring:</b> a calculator and 1 sheet of handwritten notes (front and back)</span>`,
+    lead: 'The Exam II study guide, topic by topic. Items marked Exam I review build on earlier material.',
+    callout: `<b>Exam II:</b> Tuesday, Nov. 10, 3:25-4:40 pm, Goergen 108. You may bring <b>1 sheet of handwritten notes</b> (front and back). Building that sheet from this guide and the equation sheet below is good studying in itself.`
+  }
+};
+let EXAM = '2', PROBLEMS, CARDS, GUIDE, DECKS;
+function applyExam(e) {
+  EXAM = e;
+  const x = EXAMS[e];
+  PROBLEMS = x.problems; CARDS = x.cards; GUIDE = x.guide; DECKS = x.decks;
+}
+// Exam I keeps its original storage keys; Exam II keys are prefixed.
+function gk(k) { return EXAM === '1' ? k : EXAM + ':' + k; }
+function kk(id) { return EXAM === '1' ? id : EXAM + ':' + id; }
+
 // ═══════════════════════════════════════
 // APP STATE & STORAGE (per-browser conveniences only)
 // ═══════════════════════════════════════
@@ -1042,6 +1636,7 @@ function saveStore() { try { localStorage.setItem(STORE_KEY, JSON.stringify(stor
 const store = loadStore();
 store.guide = store.guide || {};
 store.known = store.known || {};
+applyExam(store.exam === '1' ? '1' : '2');
 
 let currentFilter = "All";
 let currentTab = "home";
@@ -1074,7 +1669,7 @@ function switchTab(id, opts) {
 // ── Home ──
 function renderTopics() {
   const grid = document.getElementById('topicsGrid');
-  grid.innerHTML = Object.entries(TOPICS).map(([name, t]) =>
+  grid.innerHTML = [...new Set(PROBLEMS.map(p => p.topic))].map(name => [name, TOPICS[name]]).map(([name, t]) =>
     `<button class="topic-badge" style="color:${t.color};background:rgba(${t.rgb},0.06);border-color:rgba(${t.rgb},0.22)" onclick="filterFromHome('${name.replace(/'/g,"\\'")}')">${t.icon} ${escapeHtml(name)}</button>`
   ).join('');
 }
@@ -1082,8 +1677,8 @@ function filterFromHome(topic) { currentFilter = topic; switchTab('problems'); }
 function guideStats() {
   let total = 0, done = 0;
   GUIDE.forEach((sec, si) => sec.items.forEach((it, ii) => {
-    const k = si + '.' + ii; total++; if (store.guide[k]) done++;
-    (it.subs || []).forEach((s, ssi) => { total++; if (store.guide[k + '.' + ssi]) done++; });
+    const k = si + '.' + ii; total++; if (store.guide[gk(k)]) done++;
+    (it.subs || []).forEach((s, ssi) => { total++; if (store.guide[gk(k + '.' + ssi)]) done++; });
   }));
   return { total, done };
 }
@@ -1095,9 +1690,10 @@ function updateHomeStats() {
 }
 
 // ── Study guide ──
-function linkTags(q, deck) {
+function linkTags(q, deck, ex1) {
   let h = '';
   (q || []).forEach(n => { h += `<button class="qlink" onclick="event.preventDefault();event.stopPropagation();openProblem(${n})">Q${n}</button>`; });
+  if (ex1) h += `<button class="qlink ex1" onclick="event.preventDefault();event.stopPropagation();switchExam('1','guide')">Exam I review</button>`;
   if (deck) h += `<button class="qlink deck" onclick="event.preventDefault();event.stopPropagation();openDeck('${deck}')">${DECKS[deck].name} cards</button>`;
   return h ? `<span class="links">${h}</span>` : '';
 }
@@ -1107,13 +1703,13 @@ function renderGuide() {
   GUIDE.forEach((sec, si) => {
     html += `<div class="guide-block${sec.added ? ' added' : ''}"><div class="guide-head"><div class="guide-title">${sec.title}</div>${sec.note ? `<div class="guide-note">${sec.note}</div>` : ''}</div><ul class="guide-list">`;
     sec.items.forEach((it, ii) => {
-      const k = si + '.' + ii; const on = !!store.guide[k];
-      html += `<li class="guide-item${on ? ' done' : ''}"><input type="checkbox" id="g-${si}-${ii}" ${on ? 'checked' : ''} onchange="toggleGuide('${k}', this.checked)"><div><label for="g-${si}-${ii}">${it.html}</label>${linkTags(it.q, it.deck)}`;
+      const k = si + '.' + ii; const on = !!store.guide[gk(k)];
+      html += `<li class="guide-item${on ? ' done' : ''}"><input type="checkbox" id="g-${si}-${ii}" ${on ? 'checked' : ''} onchange="toggleGuide('${k}', this.checked)"><div><label for="g-${si}-${ii}">${it.html}</label>${linkTags(it.q, it.deck, it.ex1)}`;
       if (it.subs) {
         html += '<ul class="sub-list">';
         it.subs.forEach((s, ssi) => {
-          const sk = k + '.' + ssi; const son = !!store.guide[sk];
-          html += `<li class="${son ? 'done' : ''}"><input type="checkbox" id="g-${si}-${ii}-${ssi}" ${son ? 'checked' : ''} onchange="toggleGuide('${sk}', this.checked)"><div><label for="g-${si}-${ii}-${ssi}"><span class="txt">${s.html}</span></label>${linkTags(s.q, s.deck)}</div></li>`;
+          const sk = k + '.' + ssi; const son = !!store.guide[gk(sk)];
+          html += `<li class="${son ? 'done' : ''}"><input type="checkbox" id="g-${si}-${ii}-${ssi}" ${son ? 'checked' : ''} onchange="toggleGuide('${sk}', this.checked)"><div><label for="g-${si}-${ii}-${ssi}"><span class="txt">${s.html}</span></label>${linkTags(s.q, s.deck, s.ex1)}</div></li>`;
         });
         html += '</ul>';
       }
@@ -1122,44 +1718,14 @@ function renderGuide() {
     html += '</ul></div>';
   });
 
-  html += `<div class="guide-block"><div class="guide-head"><div class="guide-title">Review Course Materials</div></div>
-    <p class="quote">Be sure you know how to do all HW problems, practice problems, and all problems covered in class. Replicating the solutions with given constants/parameters is a better method of studying than reviewing the answer.</p>
-    <p class="quote" style="margin-top:10px">The study guide's practice problem (portable solar panel and immersion heater) is worked out in ${'<button class="qlink" onclick="openProblem(19)">Q19</button>'}.</p></div>`;
-
-  html += `<div class="guide-block"><div class="guide-head"><div class="guide-title">Recommended Equation Sheet</div><div class="guide-note">A starting point for your notes sheet</div></div>
-    <div class="eqsheet">
-      <div class="eq-group"><h4>Conversions</h4><ul>
-        <li>1 m = 3.28 ft</li><li>1 in = 2.54 cm</li><li>1 ft = 12 in</li><li>1 kg = 2.2 lbs</li>
-        <li>K - 273 = °C</li><li>°R - 459.7 = °F</li><li>1 cal = 4.18 J</li>
-      </ul></div>
-      <div class="eq-group"><h4>Constants</h4><ul>
-        <li>c = 1 cal/(g·°C) = 4.18 J/(g·°C) = 1 BTU/(lb·°F)</li>
-        <li>R = 8.314 J/(mol·K) = 0.0821 L·atm/(mol·K)</li>
-        <li>g = 9.8 m/s² = 9.8 N/kg = 32.2 ft/s²</li>
-      </ul></div>
-      <div class="eq-group"><h4>Mechanics &amp; Gases</h4><ul>
-        <li>ΣF = ma</li><li>P = F/A</li><li>PE = mgh</li><li>KE = ½mv²</li><li>PV = nRT</li>
-      </ul></div>
-      <div class="eq-group"><h4>Thermodynamics</h4><ul>
-        <li>Q = mcΔT</li><li>ΔU = Q + W</li><li>W = -pΔV</li><li>ΔH = ΔU + PΔV</li><li>ΔG = ΔH - TΔS</li>
-      </ul></div>
-      <div class="eq-group"><h4>Heat Engines &amp; Power</h4><ul>
-        <li>|Q<sub>H</sub>| = |Q<sub>c</sub>| + |W|</li><li>T<sub>c</sub>/T<sub>H</sub> = Q<sub>c</sub>/Q<sub>H</sub></li>
-        <li>η = W/Q<sub>H</sub> <small>(heat engines)</small></li><li>η = W/E<sub>in</sub> <small>(generalized definition)</small></li>
-        <li>P = E/t</li><li>P = IV</li><li>V = IR</li>
-      </ul></div>
-      <div class="eq-group"><h4>Unit Prefixes</h4><ul>
-        <li>Nano 10⁻⁹, Micro 10⁻⁶, Milli 10⁻³</li><li>Kilo 10³, Mega 10⁶, Giga 10⁹</li><li>Tera 10¹²</li>
-      </ul></div>
-      <div class="eq-group"><h4>Misc.</h4><p>One calorie is the energy required to raise the temperature of one gram of water by one degree Celsius.</p></div>
-    </div></div>`;
+  html += EXAMS[EXAM].extra();
 
   grid.innerHTML = html;
   const g = guideStats();
   document.getElementById('guideProgress').textContent = `${g.done} of ${g.total} items checked off`;
 }
 function toggleGuide(k, on) {
-  if (on) store.guide[k] = 1; else delete store.guide[k];
+  if (on) store.guide[gk(k)] = 1; else delete store.guide[gk(k)];
   saveStore(); renderGuide();
 }
 function openProblem(n) {
@@ -1179,7 +1745,7 @@ function openDeck(d) { fcDeck = d; fcIndex = 0; buildOrder(); switchTab('cards')
 let fcDeck = "All", fcIndex = 0, fcFlipped = false, fcReverse = false, fcHideKnown = false, fcOrder = [];
 function buildOrder(shuffle) {
   let list = CARDS.filter(c => fcDeck === "All" || c.deck === fcDeck);
-  if (fcHideKnown) list = list.filter(c => !store.known[c.id]);
+  if (fcHideKnown) list = list.filter(c => !store.known[kk(c.id)]);
   fcOrder = list.map(c => c.id);
   if (shuffle) {
     for (let i = fcOrder.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [fcOrder[i], fcOrder[j]] = [fcOrder[j], fcOrder[i]]; }
@@ -1199,7 +1765,7 @@ function setHideKnown(on) { fcHideKnown = on; fcIndex = 0; fcFlipped = false; bu
 function shuffleCards() { fcIndex = 0; fcFlipped = false; buildOrder(true); renderCard(); }
 function resetKnown() {
   const ids = CARDS.filter(c => fcDeck === "All" || c.deck === fcDeck).map(c => c.id);
-  ids.forEach(id => delete store.known[id]); saveStore();
+  ids.forEach(id => delete store.known[kk(id)]); saveStore();
   fcIndex = 0; fcFlipped = false; buildOrder(); renderCard();
 }
 function renderCard() {
@@ -1207,7 +1773,7 @@ function renderCard() {
   document.getElementById('fcReverse').checked = fcReverse;
   document.getElementById('fcHideKnown').checked = fcHideKnown;
   const deckCards = CARDS.filter(c => fcDeck === "All" || c.deck === fcDeck);
-  const knownN = deckCards.filter(c => store.known[c.id]).length;
+  const knownN = deckCards.filter(c => store.known[kk(c.id)]).length;
   document.getElementById('fcKnownCount').textContent = `Known: ${knownN} / ${deckCards.length}`;
   document.getElementById('fcProgress').style.width = (100 * knownN / deckCards.length) + '%';
   const area = document.getElementById('fcArea');
@@ -1223,7 +1789,7 @@ function renderCard() {
   const back = fcReverse ? c.front : c.back;
   const frontMono = fcReverse && c.monoBack;
   const backMono = !fcReverse && c.monoBack;
-  const known = !!store.known[c.id];
+  const known = !!store.known[kk(c.id)];
   area.innerHTML = `
     <div class="fc-stage">
       <div class="fc-card ${fcFlipped ? 'flipped' : ''}" id="fcCard" role="button" tabindex="0" aria-label="Flash card, click to flip" onclick="flipCard()">
@@ -1256,7 +1822,7 @@ function prevCard() { if (!fcOrder.length) return; fcIndex = (fcIndex - 1 + fcOr
 function markCard(know) {
   if (!fcOrder.length) return;
   const id = fcOrder[fcIndex];
-  if (know) store.known[id] = 1; else delete store.known[id];
+  if (know) store.known[kk(id)] = 1; else delete store.known[kk(id)];
   saveStore();
   if (know && fcHideKnown) {
     fcOrder.splice(fcIndex, 1);
@@ -1339,14 +1905,47 @@ function toggleBox(kind, id) {
 }
 function collapseAll() { [...openSet].forEach(id => setOpen(id, false)); openSet.clear(); renderProblems(); }
 
-// ── Init ──
-document.addEventListener('DOMContentLoaded', () => {
+
+// ── Exam switching ──
+function renderExamChrome() {
+  const x = EXAMS[EXAM];
+  document.getElementById('subtitle').textContent = 'Introduction to Sustainable Energy | ' + x.label + ' Study Tool';
+  document.getElementById('welcomeTitle').textContent = x.title;
+  document.getElementById('welcomeText').innerHTML = x.welcome;
+  document.getElementById('examStrip').innerHTML = x.strip;
+  document.getElementById('guideLead').innerHTML = x.lead + ' Check off each item once you can do it without notes. The tags next to each item jump to matching practice problems (<span class="qlink" style="cursor:default">Q1</span>) or flash card decks (<span class="qlink deck" style="cursor:default">Cards</span>).';
+  document.getElementById('notesCallout').innerHTML = x.callout;
+  document.querySelectorAll('.exam-btn').forEach(b => {
+    const on = b.dataset.exam === EXAM;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on);
+  });
   renderTopics();
   updateHomeStats();
-  buildOrder();
+}
+function switchExam(e, tab) {
+  if (e !== EXAM) {
+    applyExam(e);
+    store.exam = e; saveStore();
+    currentFilter = 'All';
+    openSet.clear();
+    fcDeck = 'All'; fcIndex = 0; fcFlipped = false;
+    buildOrder();
+    renderExamChrome();
+  }
+  switchTab(tab || currentTab);
+}
+
+// ── Init ──
+document.addEventListener('DOMContentLoaded', () => {
   const h = (location.hash || '').replace('#', '');
-  if (['guide','cards','problems','home'].includes(h)) switchTab(h);
+  if (/exam1/.test(h)) applyExam('1');
+  if (/exam2/.test(h)) applyExam('2');
+  buildOrder();
+  renderExamChrome();
+  const tab = h.split('-').pop();
+  if (['guide','cards','problems','home'].includes(tab)) switchTab(tab);
 });
 </script>
-
-</body></html>
+</body>
+</html>
